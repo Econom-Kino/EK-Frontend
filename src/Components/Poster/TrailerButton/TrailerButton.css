@@ -33,7 +33,7 @@
     width: 160px;
 
     transition-property: width;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
     transition-timing-function: ease;    
 }
 
