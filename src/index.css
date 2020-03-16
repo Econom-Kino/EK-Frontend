@@ -4,6 +4,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif;
-  
+  background: #EDEDED;
 }
 
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}

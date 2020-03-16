@@ -1,0 +1,23 @@
+.footer {
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 15px #FFFFFF;
+    margin-top: 50px;
+    margin-bottom: 12px;
+}
+
+.footer__inner {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.footer__text {
+    color: #5F5F5F;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.footer__text_span {
+    font-size: 42px;
+    line-height: 49px;
+}
