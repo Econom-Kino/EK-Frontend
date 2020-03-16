@@ -11,8 +11,7 @@ class Footer extends React.Component {
                 <div className="container">
                     <div className="footer__inner">
                         <div className="footer__text">
-                            made with love by
-                            <span className="footer__text_span"> Econom Kino</span>
+                            <span className="footer__text__span">© 2020 </span> Made with 💚 by EK-Team
                         </div>
                     </div>
                 </div>
