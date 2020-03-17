@@ -25,4 +25,5 @@
 .navbar__li a:hover {
     text-decoration-line: underline;
     cursor: pointer;
+    color: #F2994A;
 }
