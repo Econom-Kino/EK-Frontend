@@ -1,8 +1,8 @@
 import React from 'react';
 import './Main.css';
 
+import Header from '../Header/Header';
 import Posters from '../Posters/Posters';
-
 import Footer from '../Footer/Footer';
 
 class Main extends React.Component {
@@ -11,6 +11,8 @@ class Main extends React.Component {
     render() {
         return (
             <div>
+                <Header />
+
                 <Posters />
 
                 <Footer />

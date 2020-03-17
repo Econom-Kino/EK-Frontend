@@ -21,7 +21,7 @@ class Posters extends React.Component {
 
     render() {
         return ( // at the momment return only one poster for cheking view
-            <div>
+            <div id="posters">
                 <div className="container">
                     <div className="posters__list">
                         <Poster  //at the momemt static data
@@ -157,6 +157,9 @@ class Posters extends React.Component {
                             trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
                             premier={''}
                         />
+                    </div>
+                    <div className="posters__btn__inner">
+                        <div className="posters__btn">Всі фільми</div>
                     </div>
                 </div>
             </div>

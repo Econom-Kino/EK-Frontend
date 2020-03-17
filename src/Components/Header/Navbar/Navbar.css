@@ -1,0 +1,28 @@
+.navbar__ul {
+    list-style: none;
+}
+
+.navbar__ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar__li {
+    margin-right: 27px;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.navbar__li:last-child {
+    margin-right: 0;
+}
+
+.navbar__li a{
+    color: #5F5F5F;
+    text-decoration: none;
+}
+
+.navbar__li a:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+}
