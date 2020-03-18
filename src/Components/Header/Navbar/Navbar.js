@@ -22,7 +22,7 @@ class Navbar extends React.Component {
                     </li>
                     <li className="navbar__li"><Link
                         // activeClass="active" додає клас 
-                        to=""
+                        to="anonces"
                         // spy={true} робить вибраною
                         //offset={70} додаткові пікселі прокрутки
                         smooth={true} //анімація

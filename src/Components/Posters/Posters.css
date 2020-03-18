@@ -2,12 +2,11 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    /* padding-top: 46px;
-    padding-bottom: 46px; */
+    padding-top: 46px;
+    padding-bottom: 46px;
 }
 
 .posters__btn__inner {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
 }

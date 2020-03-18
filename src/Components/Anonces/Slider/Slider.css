@@ -1,0 +1,23 @@
+.anonces__slider__item-content {
+    padding: 35px;
+    width: 190px;
+    height: 327px;
+    border-radius: 25px;
+}
+
+.anonces__slider__item-content:last-child {
+    padding-right: 0;
+
+}
+
+.anonces__slider__item {
+    width: 190px;
+}
+
+.slick-track {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*slick-prev*/
+

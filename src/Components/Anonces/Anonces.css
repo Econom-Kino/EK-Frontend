@@ -1,0 +1,18 @@
+.anonces__titel {
+    font-size: 38px;
+    line-height: 45px;
+    text-align: center;
+    color: #5F5F5F;
+    /* margin-bottom: 30px; */
+}
+
+.anonces {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+
+/* .anonces__slider {
+    height: 500px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+} */
