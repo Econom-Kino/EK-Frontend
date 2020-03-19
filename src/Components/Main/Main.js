@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Posters from '../Posters/Posters';
 import Footer from '../Footer/Footer';
 import Anonces from '../Anonces/Anonces';
+import Data from '../Data/Data';
 
 class Main extends React.Component {
 
@@ -13,6 +14,8 @@ class Main extends React.Component {
         return (
             <div>
                 <Header />
+
+                <Data />
 
                 <Posters />
 

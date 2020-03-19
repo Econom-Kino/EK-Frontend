@@ -12,12 +12,10 @@
 
 .anonces__slider__item {
     width: 190px;
+    outline: none;
 }
 
 .slick-track {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
-/*slick-prev*/
-
