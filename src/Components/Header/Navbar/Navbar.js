@@ -13,7 +13,7 @@ class Navbar extends React.Component {
                 <ul className="navbar__ul">
                     <li className="navbar__li"><Link
                         // activeClass="active" додає клас 
-                        to="posters" //до id
+                        to="data" //до id
                         // spy={true} робить вибраною
                         offset={40} //додаткові пікселі прокрутки
                         smooth={true} //анімація

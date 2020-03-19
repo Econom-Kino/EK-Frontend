@@ -10,7 +10,7 @@ class Data extends React.Component {
 
     render() {
         return (
-            <div className="data">
+            <div className="data" id="data">
                 <div className="container">
                     <div className="data__inner">
                         <div className="data__list">
