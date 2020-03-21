@@ -1,0 +1,27 @@
+.reviews {
+    color: #5F5F5F;
+    padding-top: 30px;
+    padding-bottom: 200px;
+}
+
+.reviews__titel {
+    font-size: 28px;
+    line-height: 33px;
+}
+
+
+.reviews__btn__inner {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.reviews__btn {
+    font-size: 22px;
+    line-height: 28px;
+    color: #5F5F5F;
+}
+
+.reviews__btn:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+}
