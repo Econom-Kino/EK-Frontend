@@ -6,6 +6,9 @@ import Posters from '../Posters/Posters';
 import Footer from '../Footer/Footer';
 import Anonces from '../Anonces/Anonces';
 import Data from '../Data/Data';
+import Cinemas from '../Cinemas/Cinemas';
+
+
 
 class Main extends React.Component {
 
@@ -20,6 +23,8 @@ class Main extends React.Component {
                 <Posters />
 
                 <Anonces />
+
+                <Cinemas />
 
                 <Footer />
             </div>

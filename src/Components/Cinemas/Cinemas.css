@@ -1,0 +1,20 @@
+.cinemas__tittel {
+    font-size: 38px;
+    line-height: 45px;
+    color: #5F5F5F;
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.cinemas__logo__list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cinemas__data {
+    margin-top: 54px;
+    display: flex;
+    flex-wrap: wrap;
+}
+

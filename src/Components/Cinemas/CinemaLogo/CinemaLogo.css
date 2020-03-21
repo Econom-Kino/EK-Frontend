@@ -1,0 +1,25 @@
+.cinema__logo {
+    border-radius: 25px;
+    width: 198px;
+    height: 100px;
+    font-size: 21px;
+    line-height: 25px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cinema__logo__text {
+    text-align: center;
+}
+
+.cinema__logo:hover {
+    border: 1.5px solid #F2994A;
+}
