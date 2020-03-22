@@ -10,7 +10,7 @@ import SliderArrow from './SliderArrow/SliderArrow';
 export default class MultipleItems extends Component {
     render() {
         const settings = {
-            autoplay: true,
+            autoplay: false,
             dots: false,
             infinite: true,
             speed: 500,
@@ -20,7 +20,7 @@ export default class MultipleItems extends Component {
             nextArrow: <SliderArrow to="next" side='right' stl='rotate(180deg)' arr='arrownext' />,
         };
         return (
-            <div>
+            <div style={{ display: 'flex' }}>
                 <Slider {...settings}>
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >

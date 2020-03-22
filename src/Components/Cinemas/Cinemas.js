@@ -4,6 +4,7 @@ import './Cinemas.css';
 import CinemaLogo from './CinemaLogo/CinemaLogo';
 import CinemaDataLeftSide from './CinemaDataLeftSide/CinemaDataLeftSide';
 import CinemaDataRightSide from './CinemaDataRightSide/CinemaDataRightSide';
+import Reviews from './Reviews/Reviews';
 
 class Cinemas extends React.Component {
 
@@ -30,6 +31,10 @@ class Cinemas extends React.Component {
                             <CinemaDataLeftSide />
                             <CinemaDataRightSide />
                         </div>
+                        <div className="cinemas__reviews">
+                            <Reviews />
+                        </div>
+
 
                     </div>
                 </div>
