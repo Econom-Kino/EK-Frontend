@@ -8,7 +8,7 @@ import Anonces from '../Anonces/Anonces';
 import Data from '../Data/Data';
 import Cinemas from '../Cinemas/Cinemas';
 
-
+import Session from '../Session/Session';
 
 class Main extends React.Component {
 
@@ -27,6 +27,14 @@ class Main extends React.Component {
                 <Cinemas />
 
                 <Footer />
+
+                {/* <Session alldata={true} />
+                <Session />
+                <Session />
+                <Session />
+                <Session />
+                <Session /> */}
+
             </div>
         )
     }
