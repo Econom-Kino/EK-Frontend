@@ -9,7 +9,6 @@ class Review extends React.Component {
 
 
     render() {
-        let src = 'ava';
         return (
             <div className="review">
                 <div className="review__author__data">

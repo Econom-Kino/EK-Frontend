@@ -16,11 +16,7 @@ class Cinemas extends React.Component {
 
         this.state = {
             showdata: false,
-            place: '',
-            authorNames: '',
-            profilePhotoUrls: '',
-            ratings: '',
-            texts: '',
+            reviewsData: '',
 
         }
 
@@ -42,28 +38,11 @@ class Cinemas extends React.Component {
             .then(data => data.json())
             .then(data => {
                 let resp = data.result.reviews;
-                let res = Array.from(resp);
-                let author_names = [];
-                let profile_photo_urls = [];
-                let users_ratings = [];
-                let users_texts = [];
-                res.forEach((elem) => {
-                    author_names.push(elem.author_name);
-                    profile_photo_urls.push(elem.profile_photo_url);
-                    users_ratings.push(elem.rating);
-                    users_texts.push(elem.text);
-                });
-                this.setState({
-                    authorNames: author_names,
-                    profilePhotoUrls: profile_photo_urls,
-                    ratings: users_ratings,
-                    texts: users_texts,
-                })
+                this.setState({ reviewsData: resp })
             })
             .catch(() => console.log("Can’t access " + this.url + " response. Blocked by browser?"))
 
     }
-
 
 
     render() {
@@ -102,11 +81,8 @@ class Cinemas extends React.Component {
                             </div>}
                         {this.state.showdata &&
                             <div className="cinemas__reviews">
-                                {true && <Reviews
-                                    names={this.state.authorNames}
-                                    profilePhotoUrls={this.state.profilePhotoUrls}
-                                    ratings={this.state.ratings}
-                                    texts={this.state.texts}
+                                {this.state.showdata && <Reviews
+                                    reviewsData={this.state.reviewsData}
                                 />}
                             </div>
                         }
