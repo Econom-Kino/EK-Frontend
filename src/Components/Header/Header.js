@@ -2,6 +2,7 @@ import React from 'react';
 import './Header.css';
 
 import Navbar from './Navbar/Navbar';
+import { NavLink, Route } from 'react-router-dom';
 
 class Header extends React.Component {
 
@@ -12,12 +13,16 @@ class Header extends React.Component {
                 <div className="container">
                     <div className="header__inner">
                         <div className="header__logo">
-                            <img src={require("./imgs/Asset 13.svg")}
-                                style={{ height: "33px" }} alt="logo">
-                            </img>
+                            <NavLink to='/'>
+                                <img src={require("./imgs/Asset 13.svg")}
+                                    style={{ height: "33px" }} alt="logo">
+                                </img>
+                            </NavLink>
                         </div>
                         <div className="header__navbar">
-                            <Navbar />
+                            <Route exact path='/'>
+                                <Navbar />
+                            </Route>
                         </div>
                     </div>
                 </div>

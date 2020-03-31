@@ -1,6 +1,7 @@
 import React from 'react';
 import './Poster.css';
 import FilmAbout from './FilmAbout/FilmAbout';
+import { NavLink } from 'react-router-dom';
 
 
 class Poster extends React.Component {
@@ -30,20 +31,22 @@ class Poster extends React.Component {
 
                         />
                     }
-
-                    <div className="poster__img"
-                        style={{
-                            backgroundColor: `${this.state.bgColor}`,
-                        }}
-                    >
-                        <img src={require(`${this.props.posterLink}`)} alt={this.props.filmName}
+                    <NavLink to='/movie/movieName'>
+                        <div className="poster__img"
                             style={{
-                                filter: `${this.state.isBlur}`,
-                            }} />
-                    </div>
-                    <div className="poster__titel">
-                        {this.props.filmName}
-                    </div>
+                                backgroundColor: `${this.state.bgColor}`,
+                            }}
+                        >
+                            <img src={require(`${this.props.posterLink}`)} alt={this.props.filmName}
+                                style={{
+                                    filter: `${this.state.isBlur}`,
+                                }} />
+                        </div>
+
+                        <div className="poster__titel">
+                            {this.props.filmName}
+                        </div>
+                    </NavLink>
                 </div>
             </div>
         )

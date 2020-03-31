@@ -22,4 +22,5 @@
 
 .cinema__logo:hover {
     border: 1.5px solid #F2994A;
+    cursor: pointer;
 }

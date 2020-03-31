@@ -21,3 +21,7 @@
     border-top-right-radius: 25px;
     overflow: hidden;
 }
+
+.poster a {
+    text-decoration: none;
+}
