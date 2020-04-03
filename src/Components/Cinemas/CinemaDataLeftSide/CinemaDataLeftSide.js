@@ -8,10 +8,15 @@ import CinemasPhotos from './CinemasPhotos/CinemaPhotos';
 class CinemaDataLeftSide extends React.Component {
 
 
+
     render() {
         return (
             <div className="cinema__leftside">
-                <Map />
+
+                <Map
+                    mapLongitude={this.props.mapLongitude}
+                    mapLatitude={this.props.mapLatitude}
+                />
                 <CinemasPhotos />
             </div>
         )

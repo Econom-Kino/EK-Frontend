@@ -14,17 +14,25 @@ class MapWrapper extends React.Component {
             borderRadius: '35px',
             boxShadow: '19px 19px 38px rgba(201, 201, 201, 0.7), -19px -19px 38px #FFFFFF'
         }
+
+        let lng = this.props.mapLongitude;
+        let lat = this.props.mapLatitude;
+
         return (
 
             <div className='cinema__map'>
-                <Map google={this.props.google} zoom={14} style={style}
+                <Map google={this.props.google} zoom={15} style={style}
                     initialCenter={{
-                        lat: 49.807104,
-                        lng: 23.977608
+                        lat: lat,
+                        lng: lng
+                    }}
+                    center={{
+                        lat: lat,
+                        lng: lng
                     }}
                 >
                     <Marker
-                        position={{ lat: 49.807104, lng: 23.977608 }} />
+                        position={{ lat: lat, lng: lng }} />
 
                 </Map>
             </div>

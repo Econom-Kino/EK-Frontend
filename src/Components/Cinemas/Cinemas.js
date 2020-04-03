@@ -17,6 +17,7 @@ class Cinemas extends React.Component {
         this.state = {
             showdata: false,
             reviewsData: '',
+            cinemasData: '',
 
         }
 
@@ -31,7 +32,7 @@ class Cinemas extends React.Component {
         dovjenka: 'ChIJ3X6gOm3oOkcRirf_eSmxXSI',
     };
 
-    testFunk = (place) => {
+    getReviews = (place) => {
         this.setState({ showdata: true });
         this.url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place}&key=${this.key}&fields=review&language=uk`;
         fetch(this.proxyurl + this.url, { mode: 'cors' })
@@ -42,6 +43,15 @@ class Cinemas extends React.Component {
             })
             .catch(() => console.log("Can’t access " + this.url + " response. Blocked by browser?"))
 
+    }
+
+    getCinemasData = (place) => {
+        fetch(`http://localhost:8000/cinemas/${place}/`)
+            .then(data => data.json())
+            .then(data => {
+                this.setState({ cinemasData: data })
+            })
+            .catch(() => console.log("Can’t access"));
     }
 
 
@@ -55,29 +65,54 @@ class Cinemas extends React.Component {
                         </div>
                         <div className="cinemas__logo__list">
 
-                            <div onClick={() => this.testFunk(this.places.vg)} >
+                            <div onClick={() => {
+                                this.getReviews(this.places.vg);
+                                this.getCinemasData(this.places.vg);
+                            }} >
                                 <CinemaLogo cinemaLogoSrc={"viktoria"} bgText={'Multiplex: Viktoria Gargens'} />
                             </div>
-                            <div onClick={() => this.testFunk(this.places.spartak)}>
+                            <div onClick={() => {
+                                this.getReviews(this.places.spartak);
+                                this.getCinemasData(this.places.spartak);
+
+                            }}>
                                 <CinemaLogo cinemaLogoSrc={"spartak"} bgText={'Multiplex: Spartak'} />
                             </div>
-                            <div onClick={() => this.testFunk(this.places.kk)}>
+                            <div onClick={() => {
+                                this.getReviews(this.places.kk);
+                                this.getCinemasData(this.places.kk);
+                            }}>
                                 <CinemaLogo cinemaLogoSrc={"king_cross"} bgText={'Планета Кіно: King Cross'} />
                             </div>
-                            <div onClick={() => this.testFunk(this.places.forum)}>
+                            <div onClick={() => {
+                                this.getReviews(this.places.forum);
+                                this.getCinemasData(this.places.forum);
+                            }}>
                                 <CinemaLogo cinemaLogoSrc={"forum"} bgText={'Планета Кіно: Forum Lviv'} />
                             </div>
-                            <div onClick={() => this.testFunk(this.places.palace)}>
+                            <div onClick={() => {
+                                this.getReviews(this.places.palace);
+                                this.getCinemasData(this.places.palace);
+                            }}>
                                 <CinemaLogo cinemaLogoSrc={"kinopalce"} bgText={'Кінопалац'} />
                             </div>
-                            <div onClick={() => this.testFunk(this.places.dovjenka)}>
+                            <div onClick={() => {
+                                this.getReviews(this.places.dovjenka);
+                                this.getCinemasData(this.places.dovjenka);
+                            }}>
                                 <CinemaLogo cinemaLogoSrc={"dovjenka"} bgText={'Кінопалац ім. Довженка'} />
                             </div>
                         </div>
                         {this.state.showdata &&
                             <div className="cinemas__data">
-                                <CinemaDataLeftSide />
-                                <CinemaDataRightSide />
+
+                                <CinemaDataLeftSide
+                                    mapLongitude={this.state.cinemasData.longitude}
+                                    mapLatitude={this.state.cinemasData.latitude}
+                                />
+                                <CinemaDataRightSide
+                                    cinemaData={this.state.cinemasData}
+                                />
                             </div>}
                         {this.state.showdata &&
                             <div className="cinemas__reviews">

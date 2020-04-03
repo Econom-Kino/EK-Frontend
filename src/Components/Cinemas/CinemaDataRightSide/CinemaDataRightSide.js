@@ -10,7 +10,9 @@ class CinemaDataRightSide extends React.Component {
     render() {
         return (
             <div className="cinema__rightside">
-                <CinemaDescription />
+                <CinemaDescription
+                    cinemaData={this.props.cinemaData}
+                />
             </div>
         )
     }
