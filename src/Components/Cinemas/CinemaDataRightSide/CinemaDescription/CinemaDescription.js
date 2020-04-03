@@ -28,7 +28,6 @@ class CinemaDescription extends React.Component {
                         name="cinema_rate"
                     />
                     </div>
-                    <div className="rate__people">(9020)</div>
                 </div>
                 <div className="cinema__description__location">
                     <img className="cinema_descrip_img" alt='location' src={require('./location_icon.png')} /> <div>{address}</div>
