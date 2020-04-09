@@ -18,19 +18,11 @@ class Cinemas extends React.Component {
             showdata: false,
             reviewsData: '',
             cinemasData: '',
+            cinemaPhotos: '',
 
         }
 
     }
-
-    places = {
-        vg: 'ChIJl3xz8QnnOkcReSOln9d6RqY',
-        spartak: 'ChIJ4dGDScndOkcRK6iYsuY5rCk',
-        forum: 'ChIJif8CqgvdOkcRxDok8ta8w7Y',
-        kk: 'ChIJG3CADybmOkcRkBn2_jOgbyA',
-        palace: 'ChIJjW4PlXLdOkcRH4w0juRF9Ww',
-        dovjenka: 'ChIJ3X6gOm3oOkcRirf_eSmxXSI',
-    };
 
     getReviews = (place) => {
         this.setState({ showdata: true });
@@ -45,15 +37,44 @@ class Cinemas extends React.Component {
 
     }
 
-    getCinemasData = (place) => {
-        fetch(`http://localhost:8000/cinemas/${place}/`)
+    getCinemasData = (placeId) => {
+        fetch(`http://ekinoback.herokuapp.com/cinemas/place_id/${placeId}/`)
             .then(data => data.json())
             .then(data => {
-                this.setState({ cinemasData: data })
+                this.setState({ cinemasData: data });
             })
             .catch(() => console.log("Can’t access"));
     }
 
+    getPhotos = (placeId) => {
+        fetch(`http://ekinoback.herokuapp.com/cinema-images/cinema/${placeId}/`)
+            .then(data => data.json())
+            .then(data => {
+                this.setState({ cinemaPhotos: data });
+            })
+            .catch(() => console.log("Can’t access"));
+    }
+
+    cinemas = [
+        { placeId: 'ChIJl3xz8QnnOkcReSOln9d6RqY', cinemaLogoSrc: 'viktoria', bgText: 'Multiplex: Viktoria Gargens' },
+        { placeId: 'ChIJ4dGDScndOkcRK6iYsuY5rCk', cinemaLogoSrc: 'spartak', bgText: 'Multiplex: Spartak' },
+        { placeId: 'ChIJG3CADybmOkcRkBn2_jOgbyA', cinemaLogoSrc: 'king_cross', bgText: 'Планета Кіно: King Cross' },
+        { placeId: 'ChIJif8CqgvdOkcRxDok8ta8w7Y', cinemaLogoSrc: 'forum', bgText: 'Планета Кіно: Forum Lviv' },
+        { placeId: 'ChIJjW4PlXLdOkcRH4w0juRF9Ww', cinemaLogoSrc: 'kinopalce', bgText: 'Кінопалац' },
+        { placeId: 'ChIJ3X6gOm3oOkcRirf_eSmxXSI', cinemaLogoSrc: 'dovjenka', bgText: 'Кінопалац ім. Довженка' },
+    ];
+
+    cinemasElems = this.cinemas.map((elem, id) => {
+        return (
+            <div key={id * Math.random()} onClick={() => {
+                this.getReviews(elem.placeId);
+                this.getCinemasData(elem.placeId);
+                this.getPhotos(elem.placeId);
+            }}>
+                <CinemaLogo cinemaLogoSrc={elem.cinemaLogoSrc} bgText={elem.bgText} />
+            </div>
+        )
+    })
 
     render() {
         return (
@@ -64,44 +85,7 @@ class Cinemas extends React.Component {
                             Кінотеатри
                         </div>
                         <div className="cinemas__logo__list">
-
-                            <div onClick={() => {
-                                this.getReviews(this.places.vg);
-                                this.getCinemasData(this.places.vg);
-                            }} >
-                                <CinemaLogo cinemaLogoSrc={"viktoria"} bgText={'Multiplex: Viktoria Gargens'} />
-                            </div>
-                            <div onClick={() => {
-                                this.getReviews(this.places.spartak);
-                                this.getCinemasData(this.places.spartak);
-
-                            }}>
-                                <CinemaLogo cinemaLogoSrc={"spartak"} bgText={'Multiplex: Spartak'} />
-                            </div>
-                            <div onClick={() => {
-                                this.getReviews(this.places.kk);
-                                this.getCinemasData(this.places.kk);
-                            }}>
-                                <CinemaLogo cinemaLogoSrc={"king_cross"} bgText={'Планета Кіно: King Cross'} />
-                            </div>
-                            <div onClick={() => {
-                                this.getReviews(this.places.forum);
-                                this.getCinemasData(this.places.forum);
-                            }}>
-                                <CinemaLogo cinemaLogoSrc={"forum"} bgText={'Планета Кіно: Forum Lviv'} />
-                            </div>
-                            <div onClick={() => {
-                                this.getReviews(this.places.palace);
-                                this.getCinemasData(this.places.palace);
-                            }}>
-                                <CinemaLogo cinemaLogoSrc={"kinopalce"} bgText={'Кінопалац'} />
-                            </div>
-                            <div onClick={() => {
-                                this.getReviews(this.places.dovjenka);
-                                this.getCinemasData(this.places.dovjenka);
-                            }}>
-                                <CinemaLogo cinemaLogoSrc={"dovjenka"} bgText={'Кінопалац ім. Довженка'} />
-                            </div>
+                            {this.cinemasElems}
                         </div>
                         {this.state.showdata &&
                             <div className="cinemas__data">
@@ -109,6 +93,7 @@ class Cinemas extends React.Component {
                                 <CinemaDataLeftSide
                                     mapLongitude={this.state.cinemasData.longitude}
                                     mapLatitude={this.state.cinemasData.latitude}
+                                    photos={this.state.cinemaPhotos}
                                 />
                                 <CinemaDataRightSide
                                     cinemaData={this.state.cinemasData}

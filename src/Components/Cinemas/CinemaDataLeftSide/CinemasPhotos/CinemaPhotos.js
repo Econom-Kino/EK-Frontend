@@ -6,28 +6,17 @@ import './CinemaPhotos.css';
 
 class CinemaPhotos extends React.Component {
 
-
     render() {
+        let photos = Array.from(this.props.photos);
         return (
             <div className="cinema__photos">
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
-                <div className="cinema__photo">
-                    <img alt='cinema' src={require("../../cinemaslogo/viktoria.jpg")}></img>
-                </div>
+                {photos.map((elem, id) => {
+                    return (
+                        <div key={id * Math.random()} className="cinema__photo" >
+                            <img className='cinema__img' alt='cinema' src={elem.image_link}></img>
+                        </div>
+                    )
+                })}
             </div>
         )
     }

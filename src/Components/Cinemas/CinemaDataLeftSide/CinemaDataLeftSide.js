@@ -17,7 +17,7 @@ class CinemaDataLeftSide extends React.Component {
                     mapLongitude={this.props.mapLongitude}
                     mapLatitude={this.props.mapLatitude}
                 />
-                <CinemasPhotos />
+                <CinemasPhotos photos={this.props.photos} />
             </div>
         )
     }
