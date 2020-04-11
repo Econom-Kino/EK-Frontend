@@ -8,12 +8,31 @@ import ReviewsButton from './ReviewsButton/ReviewsButton';
 class Reviews extends React.Component {
 
     state = {
-        showMoreComments: false,
-        toShowOnStart: 2,
+        showMore: false,
+        toShow: 2,
+    }
+
+    showMoreComments = () => {
+        this.state.toShow === 2 ? (
+            this.setState({ toShow: 6, showMore: true })
+        ) : (
+                this.setState({ toShow: 2, showMore: false })
+            )
     }
 
     render() {
         let reviews = Array.from(this.props.reviewsData);
+        let reviewsItems = reviews.slice(0, this.state.toShow).map((r, index) => {
+            return (
+                <Review
+                    authorName={r.author_name}
+                    profilePhotoUrl={r.profile_photo_url}
+                    rating={r.rating}
+                    text={r.text}
+                    key={index}
+                />
+            )
+        });
 
         return (
             <div className="reviews">
@@ -23,41 +42,10 @@ class Reviews extends React.Component {
                             Відгуки:
                         </div>
                         <div className="reviews__review__list">
-
-                            {reviews.map((r, index) => {
-                                if (this.state.showMoreComments) {
-                                    return (
-                                        <Review
-                                            authorName={r.author_name}
-                                            profilePhotoUrl={r.profile_photo_url}
-                                            rating={r.rating}
-                                            text={r.text}
-                                            key={index}
-                                        />
-                                    )
-                                }
-                                else {
-                                    if (index < this.state.toShowOnStart)
-                                        return (
-                                            <Review
-                                                authorName={r.author_name}
-                                                profilePhotoUrl={r.profile_photo_url}
-                                                rating={r.rating}
-                                                text={r.text}
-                                                key={index}
-                                            />
-                                        )
-                                    else return <div key={index}></div>
-                                }
-                            })}
-
+                            {reviewsItems}
                         </div>
-                        <div onClick={() => {
-                            this.setState({
-                                showMoreComments: !this.state.showMoreComments,
-                            })
-                        }}>
-                            <ReviewsButton show={this.state.showMoreComments} />
+                        <div onClick={this.showMoreComments}>
+                            <ReviewsButton show={this.state.showMore} />
                         </div>
                     </div>
                 </div>

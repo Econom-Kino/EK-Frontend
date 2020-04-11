@@ -101,9 +101,9 @@ class Cinemas extends React.Component {
                             </div>}
                         {this.state.showdata &&
                             <div className="cinemas__reviews">
-                                {this.state.showdata && <Reviews
+                                <Reviews
                                     reviewsData={this.state.reviewsData}
-                                />}
+                                />
                             </div>
                         }
 
