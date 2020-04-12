@@ -22,7 +22,7 @@ class MapWrapper extends React.Component {
 
             <div className='cinema__map'>
                 <Map google={this.props.google} zoom={15} style={style}
-                    setCenter={{
+                    initialCenter={{
                         lat: lat,
                         lng: lng
                     }}

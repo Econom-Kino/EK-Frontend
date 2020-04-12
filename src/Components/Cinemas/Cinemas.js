@@ -5,6 +5,7 @@ import CinemaLogo from './CinemaLogo/CinemaLogo';
 import CinemaDataLeftSide from './CinemaDataLeftSide/CinemaDataLeftSide';
 import CinemaDataRightSide from './CinemaDataRightSide/CinemaDataRightSide';
 import Reviews from './Reviews/Reviews';
+import Spinner from 'react-spinkit';
 
 class Cinemas extends React.Component {
 
@@ -19,40 +20,53 @@ class Cinemas extends React.Component {
             reviewsData: '',
             cinemasData: '',
             cinemaPhotos: '',
-
+            loading: true,
         }
 
     }
 
-    getReviews = (place) => {
-        this.setState({ showdata: true });
-        this.url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place}&key=${this.key}&fields=review&language=uk`;
-        fetch(this.proxyurl + this.url, { mode: 'cors' })
-            .then(data => data.json())
-            .then(data => {
+    process = (prom) => {
+        prom.then(data => {
+            if (data.result) {
                 let resp = data.result.reviews;
-                this.setState({ reviewsData: resp })
-            })
-            .catch(() => console.log("Can’t access " + this.url + " response. Blocked by browser?"))
+                this.setState({ reviewsData: resp });
+            }
+            else if (data.name) {
+                this.setState({ cinemasData: data });
+            }
+            else if (data[0].cinema) {
+                this.setState({ cinemaPhotos: data });
+            }
+        })
+    }
 
+    fetchData = (placeId) => {
+        let reviewsProm = this.getReviews(placeId);
+        let cinemasDataProm = this.getCinemasData(placeId);
+        let photosProm = this.getPhotos(placeId);
+        Promise.all([reviewsProm, cinemasDataProm, photosProm])
+            .then((proms) => {
+                proms.forEach((prom) => {
+                    this.process(prom.json());
+                });
+            })
+            .then(() => {
+                this.setState({ showdata: true, loading: true });
+            })
+            .catch(() => console.log("Can’t access"));
+    }
+
+    getReviews = (place) => {
+        this.url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${place}&key=${this.key}&fields=review&language=uk`;
+        return fetch(this.proxyurl + this.url, { mode: 'cors' });
     }
 
     getCinemasData = (placeId) => {
-        fetch(`http://ekinoback.herokuapp.com/cinemas/place_id/${placeId}/`)
-            .then(data => data.json())
-            .then(data => {
-                this.setState({ cinemasData: data });
-            })
-            .catch(() => console.log("Can’t access"));
+        return fetch(`http://ekinoback.herokuapp.com/cinemas/place_id/${placeId}/`);
     }
 
     getPhotos = (placeId) => {
-        fetch(`http://ekinoback.herokuapp.com/cinema-images/cinema/${placeId}/`)
-            .then(data => data.json())
-            .then(data => {
-                this.setState({ cinemaPhotos: data });
-            })
-            .catch(() => console.log("Can’t access"));
+        return fetch(`http://ekinoback.herokuapp.com/cinema-images/cinema/${placeId}/`);
     }
 
     cinemas = [
@@ -67,9 +81,8 @@ class Cinemas extends React.Component {
     cinemasElems = this.cinemas.map((elem, id) => {
         return (
             <div key={id * Math.random()} onClick={() => {
-                this.getReviews(elem.placeId);
-                this.getCinemasData(elem.placeId);
-                this.getPhotos(elem.placeId);
+                this.setState({ loading: false })
+                this.fetchData(elem.placeId);
             }}>
                 <CinemaLogo cinemaLogoSrc={elem.cinemaLogoSrc} bgText={elem.bgText} />
             </div>
@@ -87,27 +100,29 @@ class Cinemas extends React.Component {
                         <div className="cinemas__logo__list">
                             {this.cinemasElems}
                         </div>
-                        {this.state.showdata &&
-                            <div className="cinemas__data">
-
-                                <CinemaDataLeftSide
-                                    mapLongitude={this.state.cinemasData.longitude}
-                                    mapLatitude={this.state.cinemasData.latitude}
-                                    photos={this.state.cinemaPhotos}
-                                />
-                                <CinemaDataRightSide
-                                    cinemaData={this.state.cinemasData}
-                                />
-                            </div>}
-                        {this.state.showdata &&
-                            <div className="cinemas__reviews">
-                                <Reviews
-                                    reviewsData={this.state.reviewsData}
-                                />
+                        {this.state.loading ? (
+                            this.state.showdata && <div>
+                                <div className="cinemas__data">
+                                    <CinemaDataLeftSide
+                                        mapLongitude={this.state.cinemasData.longitude}
+                                        mapLatitude={this.state.cinemasData.latitude}
+                                        photos={this.state.cinemaPhotos}
+                                    />
+                                    <CinemaDataRightSide
+                                        cinemaData={this.state.cinemasData}
+                                    />
+                                </div>
+                                <div className="cinemas__reviews">
+                                    <Reviews
+                                        reviewsData={this.state.reviewsData}
+                                    />
+                                </div>
                             </div>
-                        }
-
-
+                        ) : (
+                                <div className='spinner'>
+                                    <Spinner name='line-scale-pulse-out-rapid' color='#F2994A' className="my-class" />
+                                </div>
+                            )}
                     </div>
                 </div>
             </div >

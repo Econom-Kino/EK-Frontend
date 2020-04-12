@@ -34,7 +34,7 @@ class CinemaDescription extends React.Component {
                 </div>
                 <div className="cinema__description__site">
                     <img className="cinema_descrip_img" alt='website' src={require('./website_icon.png')} />
-                    <a className="websitelink" href={websiteLink} target="_blank">{websiteLink}</a>
+                    <a className="websitelink" rel="noopener noreferrer" href={websiteLink} target="_blank">{websiteLink}</a>
                 </div>
                 <div className="cinema__description__tel">
                     <img className="cinema_descrip_img" alt='phone' src={require('./phone_icon.png')} /> {phone}
