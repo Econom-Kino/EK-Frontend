@@ -19,7 +19,7 @@
     background: rgba(237, 237, 237, 0.5);
     padding: 8px;
     border-radius: 100%;
-    right: -23.5px;
+    right: 5.5px;
     bottom: -125px;
 }
 
@@ -53,6 +53,3 @@
     right: -29px;
 }
 
-.button__wrapper {
-    position: relative;
-}

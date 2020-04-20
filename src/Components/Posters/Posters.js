@@ -11,7 +11,7 @@ class Posters extends React.Component {
         posterUrls: [],
         filmNames: [],
         ages: [],
-        genre: [],
+        genres: [],
         durations: [],
         languages: [],
         imdbs: [],
@@ -25,10 +25,10 @@ class Posters extends React.Component {
                 <div className="container">
                     <div className="posters__list">
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -36,10 +36,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -47,10 +47,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -58,10 +58,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -69,10 +69,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -80,10 +80,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -92,10 +92,10 @@ class Posters extends React.Component {
                         />
 
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -103,10 +103,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -114,10 +114,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -125,10 +125,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -136,10 +136,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}
@@ -147,10 +147,10 @@ class Posters extends React.Component {
                             premier={''}
                         />
                         <Poster  //at the momemt static data
-                            posterLink={'./imgs/1917.png'}
+                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                             filmName={'1917'}
                             age={16}
-                            genre={'Екшен'}
+                            genres={'Екшен'}
                             duration={'1:49'}
                             language={'Українська мова'}
                             imdb={5.4}

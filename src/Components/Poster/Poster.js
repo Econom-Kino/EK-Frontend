@@ -16,14 +16,14 @@ class Poster extends React.Component {
         return (
             <div className="poster">
                 <div className="poster__inner"
-                    onMouseEnter={() => this.setState({ mouseEnter: true, isBlur: 'blur(10px)', bgColor: '#212121' })}
+                    onMouseEnter={() => this.setState({ mouseEnter: true, isBlur: 'blur(35px)', bgColor: '#212121' })}
                     onMouseLeave={() => this.setState({ mouseEnter: false, isBlur: 'none', bgColor: 'none' })}
                 >
 
                     {this.state.mouseEnter &&
                         <FilmAbout
                             age={this.props.age}
-                            genre={this.props.genre}
+                            genres={this.props.genres}
                             duration={this.props.duration}
                             language={this.props.language}
                             imdb={this.props.imdb}
@@ -37,9 +37,10 @@ class Poster extends React.Component {
                                 backgroundColor: `${this.state.bgColor}`,
                             }}
                         >
-                            <img src={require(`${this.props.posterLink}`)} alt={this.props.filmName}
+                            <img src={this.props.posterLink} alt={this.props.filmName}
                                 style={{
                                     filter: `${this.state.isBlur}`,
+                                    width: '100%'
                                 }} />
                         </div>
 

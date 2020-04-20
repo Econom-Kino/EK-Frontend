@@ -19,16 +19,59 @@ export default class MultipleItems extends Component {
             prevArrow: <SliderArrow to="prev" side='left' arr='arrowprev' />,
             nextArrow: <SliderArrow to="next" side='right' stl='rotate(180deg)' arr='arrownext' />,
         };
+
+        let items = Array.from(this.props.announcesFilms);
+        let itemsToRender = items.map((el, index) => {
+            let age = el.age ? `${el.age}` : '0';
+            let genresObj = el.genre_names;
+            let genres = []
+            genresObj.forEach((element, index, arr) => {
+                if (index + 1 < arr.length) {
+                    element.name = element.name + ',';
+                }
+                genres.push(element.name);
+            });
+            return (
+                <div key={index * Math.random()} className='anonces__slider__item'>
+                    <div className="anonces__slider__item-content" >
+                        <Poster  //at the momemt static data
+                            posterLink={el.poster_link}
+                            filmName={el.name}
+                            age={age}
+                            genres={genres}
+                            duration={el.duration}
+                            language={'Українська мова'}
+                            imdb={el.rating}
+                            trailerLink={el.trailer_link}
+                            premier={''}
+                        />
+                    </div>
+                </div>
+            )
+        })
         return (
-            <div style={{ display: 'flex' }}>
-                <Slider {...settings}>
+            <div>
+                {itemsToRender.length < 6 ? (
+                    <div style={{ display: 'flex' }}>
+                        {itemsToRender}
+                    </div>
+                ) :
+                    (
+                        <Slider {...settings}>
+                            {itemsToRender}
+                        </Slider>
+                    )
+                }
+
+                {/* <Slider {...settings}>
+                    {itemsToRender}
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -40,10 +83,10 @@ export default class MultipleItems extends Component {
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -55,10 +98,10 @@ export default class MultipleItems extends Component {
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -70,10 +113,10 @@ export default class MultipleItems extends Component {
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -85,10 +128,10 @@ export default class MultipleItems extends Component {
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -100,10 +143,10 @@ export default class MultipleItems extends Component {
                     <div className='anonces__slider__item'>
                         <div className="anonces__slider__item-content" >
                             <Poster  //at the momemt static data
-                                posterLink={'./imgs/1917.png'}
+                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
                                 filmName={'1917'}
                                 age={16}
-                                genre={'Екшен'}
+                                genres={'Екшен'}
                                 duration={'1:49'}
                                 language={'Українська мова'}
                                 imdb={5.4}
@@ -112,7 +155,7 @@ export default class MultipleItems extends Component {
                             />
                         </div>
                     </div>
-                </Slider>
+                </Slider> */}
             </div>
         );
     }
