@@ -26,7 +26,10 @@ export default class MultipleItems extends Component {
             let genresObj = el.genre_names;
             let genres = []
             genresObj.forEach((element, index, arr) => {
-                if (index + 1 < arr.length) {
+                if (arr.length === 1 || index === arr.length - 1) {
+                    element.name = `${element.name} `;
+                }
+                else {
                     element.name = element.name + ',';
                 }
                 genres.push(element.name);
@@ -62,100 +65,6 @@ export default class MultipleItems extends Component {
                         </Slider>
                     )
                 }
-
-                {/* <Slider {...settings}>
-                    {itemsToRender}
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                    <div className='anonces__slider__item'>
-                        <div className="anonces__slider__item-content" >
-                            <Poster  //at the momemt static data
-                                posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                                filmName={'1917'}
-                                age={16}
-                                genres={'Екшен'}
-                                duration={'1:49'}
-                                language={'Українська мова'}
-                                imdb={5.4}
-                                trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                                premier={''}
-                            />
-                        </div>
-                    </div>
-                </Slider> */}
             </div>
         );
     }

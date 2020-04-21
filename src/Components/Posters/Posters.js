@@ -1,165 +1,104 @@
 import React from 'react';
-
+import Spinner from 'react-spinkit';
 import Poster from '../Poster/Poster';
 
 import './Posters.css';
+import ShowMoreFilms from './ShowMoreFilms';
 
 
 class Posters extends React.Component {
-    //for fututre dynamic data
     state = {
-        posterUrls: [],
-        filmNames: [],
-        ages: [],
-        genres: [],
-        durations: [],
-        languages: [],
-        imdbs: [],
-        trailerLinks: [],
-        premiers: [],
+        films: [],
+        loading: true,
+        toShow: 12,
+        showMore: false,
+    }
+
+    showMoreFilms = () => {
+        this.state.toShow === 12 ? (
+            this.setState({ toShow: this.state.films.length, showMore: true })
+        ) : (
+                this.setState({ toShow: 12, showMore: false })
+            )
+    }
+
+    componentDidMount() {
+        this.setState({ loading: false });
+        fetch('https://ekinoback.herokuapp.com/movies/getToday/')
+            .then((data) => data.json())
+            .then((data) => {
+                this.setState({ films: data, loading: true })
+            })
+    }
+
+
+    static getDerivedStateFromProps(props) {
+        if (props.get) {
+            return {
+                films: props.films,
+            };
+        }
+        else {
+            return {};
+        }
     }
 
     render() {
-        return ( // at the momment return only one poster for cheking view
+        let items = Array.from(this.state.films);
+        let itemsToRender = items.slice(0, this.state.toShow).map((el, index) => {
+            let age = el.age ? `${el.age}` : '0';
+            let genresObj = el.genre_names;
+            let genres = []
+            genresObj.forEach((element, index, arr) => {
+                if (arr.length === 1 || index === arr.length - 1) {
+                    element.name = `${element.name} `;
+                }
+                else {
+                    element.name = element.name + ',';
+                }
+                genres.push(element.name);
+            });
+            return (
+                <div key={index * Math.random()} className='poster'>
+                    <Poster
+                        posterLink={el.poster_link}
+                        filmName={el.name}
+                        age={age}
+                        genres={genres}
+                        duration={el.duration}
+                        language={'Українська мова'}
+                        imdb={el.rating}
+                        trailerLink={el.trailer_link}
+                        premier={''}
+                    />
+                </div>
+
+            )
+        })
+        return (
             <div id="posters">
                 <div className="container">
                     <div className="posters__list">
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
+                        {this.state.loading ? (
+                            itemsToRender
+                        ) : (
+                                <div style={{ margin: '0 auto' }}>
+                                    <Spinner name='line-scale-pulse-out-rapid' color='#F2994A' className="my-class" />
+                                </div>
+                            )}
 
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
-                        <Poster  //at the momemt static data
-                            posterLink={'http://image.tmdb.org/t/p/w600_and_h900_bestv2/sMJ30Hfi8oszMFvGfBQq5ayaXXw.jpg'}
-                            filmName={'1917'}
-                            age={16}
-                            genres={'Екшен'}
-                            duration={'1:49'}
-                            language={'Українська мова'}
-                            imdb={5.4}
-                            trailerLink={'https://www.youtube.com/watch?v=OXuyIM-opQU'}
-                            premier={''}
-                        />
                     </div>
                     <div className="posters__btn__inner">
-                        <div className="posters__btn">Всі фільми</div>
+                        {items.length > 12 ? (
+                            <div
+                                onClick={this.showMoreFilms}
+                                className="posters__btn">
+                                <ShowMoreFilms show={this.state.showMore} />
+                            </div>
+
+                        ) : (
+                                <div></div>
+                            )}
                     </div>
                 </div>
             </div>

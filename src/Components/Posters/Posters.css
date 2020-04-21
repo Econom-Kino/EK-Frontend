@@ -1,6 +1,6 @@
 .posters__list {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
     padding-top: 40px;
     padding-bottom: 46px;
@@ -19,4 +19,12 @@
 .posters__btn:hover {
     text-decoration-line: underline;
     cursor: pointer;
+}
+
+.poster {
+    margin-right: 26px;
+}
+
+.poster:last-child {
+    margin-right: 0;
 }

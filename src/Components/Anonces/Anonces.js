@@ -22,7 +22,6 @@ class Anonces extends React.Component {
         fetch(this.url)
             .then((data) => data.json())
             .then((data) => {
-                console.log(data);
                 this.setState({ announcesFilms: data, loading: true });
             })
             .catch((error) => console.log(error));
