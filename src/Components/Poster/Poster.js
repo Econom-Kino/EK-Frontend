@@ -31,7 +31,7 @@ class Poster extends React.Component {
 
                         />
                     }
-                    <NavLink to='/movie/movieName'>
+                    <NavLink to={`/movie/${this.props.id}`}>
                         <div className="poster__img"
                             style={{
                                 backgroundColor: `${this.state.bgColor}`,

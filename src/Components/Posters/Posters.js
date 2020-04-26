@@ -4,6 +4,7 @@ import Poster from '../Poster/Poster';
 
 import './Posters.css';
 import ShowMoreFilms from './ShowMoreFilms';
+import { AddFilmCreator } from '../../redux/moviePage-reducer';
 
 
 class Posters extends React.Component {
@@ -12,6 +13,13 @@ class Posters extends React.Component {
         loading: true,
         toShow: 12,
         showMore: false,
+        flag: true,
+    }
+
+    addFilmToStore = (film) => {
+        this.props.state.moviePage.newFilm = film;
+        let action = AddFilmCreator(film);
+        this.props.store.dispatch(action);
     }
 
     showMoreFilms = () => {
@@ -23,12 +31,14 @@ class Posters extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ loading: false });
-        fetch('https://ekinoback.herokuapp.com/movies/getToday/')
-            .then((data) => data.json())
-            .then((data) => {
-                this.setState({ films: data, loading: true })
-            })
+        if (this.state.flag) {
+            this.setState({ loading: false });
+            fetch('https://ekinoback.herokuapp.com/movies/today')
+                .then((data) => data.json())
+                .then((data) => {
+                    this.setState({ films: data, loading: true })
+                })
+        }
     }
 
 
@@ -36,6 +46,7 @@ class Posters extends React.Component {
         if (props.get) {
             return {
                 films: props.films,
+                flag: false,
             };
         }
         else {
@@ -49,17 +60,20 @@ class Posters extends React.Component {
             let age = el.age ? `${el.age}` : '0';
             let genresObj = el.genre_names;
             let genres = []
-            genresObj.forEach((element, index, arr) => {
-                if (arr.length === 1 || index === arr.length - 1) {
-                    element.name = `${element.name} `;
-                }
-                else {
-                    element.name = element.name + ',';
-                }
+            genresObj.forEach((element) => {
                 genres.push(element.name);
             });
+            if (genres.length !== 1) {
+                genres = genres.join(',');
+            }
             return (
-                <div key={index * Math.random()} className='poster'>
+                <div
+                    onClick={() => {
+                        this.addFilmToStore(el);
+                        localStorage.setItem('film', JSON.stringify(el));
+                    }}
+                    key={index * Math.random()}
+                    className='poster'>
                     <Poster
                         posterLink={el.poster_link}
                         filmName={el.name}
@@ -70,6 +84,7 @@ class Posters extends React.Component {
                         imdb={el.rating}
                         trailerLink={el.trailer_link}
                         premier={''}
+                        id={el.id}
                     />
                 </div>
 

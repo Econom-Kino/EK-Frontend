@@ -5,7 +5,7 @@ export default class ShowMoreFilms extends React.Component {
 
     render() {
         return (
-            <div className="reviews__btn__inner">
+            <div style={{ textAlign: 'center' }}>
                 {this.props.show ? (
                     <div className="reviews__btn" >Показати менше</div>
                 ) : (

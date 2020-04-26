@@ -25,19 +25,16 @@ export default class MultipleItems extends Component {
             let age = el.age ? `${el.age}` : '0';
             let genresObj = el.genre_names;
             let genres = []
-            genresObj.forEach((element, index, arr) => {
-                if (arr.length === 1 || index === arr.length - 1) {
-                    element.name = `${element.name} `;
-                }
-                else {
-                    element.name = element.name + ',';
-                }
+            genresObj.forEach((element) => {
                 genres.push(element.name);
             });
+            if (genres.length !== 1) {
+                genres = genres.join(',');
+            }
             return (
                 <div key={index * Math.random()} className='anonces__slider__item'>
                     <div className="anonces__slider__item-content" >
-                        <Poster  //at the momemt static data
+                        <Poster
                             posterLink={el.poster_link}
                             filmName={el.name}
                             age={age}

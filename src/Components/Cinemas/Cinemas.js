@@ -62,11 +62,11 @@ class Cinemas extends React.Component {
     }
 
     getCinemasData = (placeId) => {
-        return fetch(`http://ekinoback.herokuapp.com/cinemas/place_id/${placeId}/`);
+        return fetch(` https://ekinoback.herokuapp.com/cinemas/${placeId}`);
     }
 
     getPhotos = (placeId) => {
-        return fetch(`http://ekinoback.herokuapp.com/cinema-images/cinema/${placeId}/`);
+        return fetch(`https://ekinoback.herokuapp.com/cinemas/${placeId}/cinema-images`);
     }
 
     cinemas = [

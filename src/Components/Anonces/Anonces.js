@@ -14,7 +14,7 @@ class Anonces extends React.Component {
             loading: true,
         }
 
-        this.url = 'https://ekinoback.herokuapp.com/movies/announces/';
+        this.url = 'https://ekinoback.herokuapp.com/movies/announces';
     }
 
     componentDidMount() {
