@@ -46,7 +46,7 @@ class Session extends React.Component {
                                     {fourdx && <FontAwesomeIcon icon={faWind} color={"#4493cc"}/>}
                                 </div>
                                 <div className="session__inner__cinemaname">                                    
-                                    {this.props.cinema}{' '}{' '}{' '}{<img src={require('./camera1.png')} />}                                    
+                                    {<img src={require('./camera1.png')} className="camera"/>}{this.props.cinema}                                  
                                 </div>
                                 <div className="session__inner__buyticket">
                                      <a href={this.props.buyLink}>Купити квиток</a> 
