@@ -1,7 +1,7 @@
 const ADD_FILM = 'ADD-FILM';
 
 let initialState = {
-    films: JSON.parse(localStorage.getItem('film')),
+    films: [JSON.parse(localStorage.getItem('film'))],
     newFilm: '',
 }
 
