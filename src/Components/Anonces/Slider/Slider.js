@@ -4,10 +4,18 @@ import './Slider.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { AddFilmCreator } from '../../../redux/moviePage-reducer';
 
 import SliderArrow from './SliderArrow/SliderArrow';
 
 export default class MultipleItems extends Component {
+
+    addFilmToStore = (film) => {
+        this.props.state.moviePage.newFilm = film;
+        let action = AddFilmCreator(film);
+        this.props.store.dispatch(action);
+    }
+
     render() {
         const settings = {
             autoplay: false,
@@ -32,7 +40,14 @@ export default class MultipleItems extends Component {
                 genres = genres.join(',');
             }
             return (
-                <div key={index * Math.random()} className='anonces__slider__item'>
+                <div
+                    onClick={() => {
+                        this.addFilmToStore(el);
+                        localStorage.setItem('film', JSON.stringify(el));
+                    }}
+                    key={index * Math.random()}
+                    style={{ marginRight: '26px' }}
+                    className='anonces__slider__item'>
                     <div className="anonces__slider__item-content" >
                         <Poster
                             posterLink={el.poster_link}
@@ -43,7 +58,8 @@ export default class MultipleItems extends Component {
                             language={'Українська мова'}
                             imdb={el.rating}
                             trailerLink={el.trailer_link}
-                            premier={''}
+                            id={el.id}
+                        // anonce={true}
                         />
                     </div>
                 </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Session from '../Session/Session';
 import './MoviePage.css';
 import Poster_trailer from '../Poster_trailer/Poster_trailer';
 import Description from '../Description/Description';

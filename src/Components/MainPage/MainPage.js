@@ -13,7 +13,7 @@ class MainPage extends React.Component {
 
                 <Data state={this.props.state} store={this.props.store} />
 
-                <Anonces />
+                <Anonces state={this.props.state} store={this.props.store} />
 
                 <Cinemas />
 

@@ -57,6 +57,7 @@ class Posters extends React.Component {
     render() {
         let items = Array.from(this.state.films);
         let itemsToRender = items.slice(0, this.state.toShow).map((el, index) => {
+            el['date'] = this.props.date;
             let age = el.age ? `${el.age}` : '0';
             let genresObj = el.genre_names;
             let genres = []
