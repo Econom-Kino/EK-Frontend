@@ -101,7 +101,6 @@ class Data extends React.Component {
                 day: date.getDate(),
                 month: temp,
             }
-            this.setState()
 
             return (
                 <div

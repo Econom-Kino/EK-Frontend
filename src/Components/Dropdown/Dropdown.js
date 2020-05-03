@@ -67,42 +67,42 @@ class Dropdown extends React.Component {
 
 
     handleChange0 = selectedOption => {
-        this.setState({ selectedOption0: selectedOption});
-        width0 = selectedOption.label.length * 12+35;
+        this.setState({ selectedOption0: selectedOption });
+        width0 = selectedOption.label.length * 12 + 35;
         this.props.updateData(0, selectedOption);
 
-      
+
     };
 
-    handleChange1 = selectedOption => { 
-        
-        if(selectedOption == null){
+    handleChange1 = selectedOption => {
+
+        if (selectedOption == null) {
             width1 = 158;
             this.props.updateData(1, null);
-            this.setState({ selectedOption1: [] , clearAll1: true});
+            this.setState({ selectedOption1: [], clearAll1: true });
         } else {
-            width1 = 158+selectedOption.length*47;
+            width1 = 158 + selectedOption.length * 47;
             this.props.updateData(1, selectedOption);
-            this.setState({ selectedOption1: selectedOption , clearAll1: true});
+            this.setState({ selectedOption1: selectedOption, clearAll1: true });
         }
-        console.log('lol1',this.state.selectedOption2);
-        
+        console.log('lol1', this.state.selectedOption2);
+
     };
 
     handleChange2 = selectedOption => {
-        if(selectedOption == null){
-            width2= 158;
-            height2=50;
+        if (selectedOption == null) {
+            width2 = 158;
+            height2 = 50;
             this.setState({ selectedOption2: [] });
             this.props.updateData(2, []);
         } else {
             width2 = /*selectedOption[selectedOption.length-1].label.length*12+30;*/293
             console.log(width2);
-            height2 = 50+(selectedOption.length-1)*25;
+            height2 = 50 + (selectedOption.length - 1) * 25;
             this.setState({ selectedOption2: selectedOption });
             this.props.updateData(2, selectedOption);
         }
-        
+
     };
 
     writeData(array) {
@@ -121,9 +121,9 @@ class Dropdown extends React.Component {
     };
 
     render() {
-        if (this.state.writeDataCount == 0){        
+        if (this.state.writeDataCount == 0) {
             this.writeData(this.props.cinemas);
-            this.setState({writeDataCount: 1})
+            // this.setState({writeDataCount: 1})
         }
 
         const { selectedOption0 } = this.state;
@@ -131,27 +131,28 @@ class Dropdown extends React.Component {
         const { selectedOption2 } = this.state;
         const animatedComponents = makeAnimated();
 
-        if(this.props.isClicked == true){
-            this.setState({selectedOption0: null, 
-                            selectedOption1: [],
-                            selectedOption2: []
-            })
+        if (this.props.isClicked == true) {
+            // this.setState({
+            //     selectedOption0: null,
+            //     selectedOption1: [],
+            //     selectedOption2: []
+            // })
             width0 = 163;
             width1 = 158;
             width2 = 158;
             height2 = 50;
-            let toSend = {id: 'finish', value: ' ' };
+            let toSend = { id: 'finish', value: ' ' };
             this.props.updateData(-1, toSend);
         }
 
-        if(this.state.selectedOption2.length == 0){
-            width2=158;
-            height2=50;
+        if (this.state.selectedOption2.length == 0) {
+            width2 = 158;
+            height2 = 50;
         }
-         if(this.state.selectedOption1.length == 0 && this.state.clearAll1 == true){
-            width1=158;
+        if (this.state.selectedOption1.length == 0 && this.state.clearAll1 == true) {
+            width1 = 158;
             this.props.updateData(1, null);
-            this.setState({clearAll1: false})
+            // this.setState({ clearAll1: false })
         }
 
         return (
@@ -195,7 +196,7 @@ class Dropdown extends React.Component {
                 <div className='item'>
                     <Select
                         placeholder={<div className='text'>Обрати<br /> формати</div>}
-                        components={{ IndicatorSeparator: () => null, makeAnimated}}
+                        components={{ IndicatorSeparator: () => null, makeAnimated }}
                         isMulti={true}
                         value={selectedOption1}
                         onChange={this.handleChange1}
