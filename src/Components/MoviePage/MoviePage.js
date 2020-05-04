@@ -1,41 +1,24 @@
 import React from 'react';
 import './MoviePage.css';
-import Poster_trailer from '../Poster_trailer/Poster_trailer';
+import PosterTrailer from '../Poster_trailer/Poster_trailer';
 import Description from '../Description/Description';
 import Dropdown from '../Dropdown/Dropdown';
 import SessionList from '../SessionList/SessionsList';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-let allCinemas = [];
 let cinemasRate = {};
 let allSessions = [];
 var id = 0;
-
-//Записує в allCinemas всі кінотатри
-async function getCinemas() {
-    let response = await fetch('https://ekinoback.herokuapp.com/cinemas');
-
-    if (response.ok) {
-        allCinemas = await response.json();
-    }
-    else {
-        console.log("error response: getCinemas");
-    }
-
-    for (var i = 0; i < allCinemas.length; i++) {
-        cinemasRate[allCinemas[i].place_id] = allCinemas[i].rating
-    }
-
-}
-
-getCinemas();
+var year;
+var day;
+var month;
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
     var result = false;
     for (var i = object2.length - 1; i >= 0; i--) {
-        if (object2[i].value == elem.cinema) {
+        if (object2[i].value === elem.cinema) {
             result = true;
         }
     }
@@ -45,7 +28,7 @@ function someIncludeCinema(elem, object2) {
 function someIncludeTech(elem, object2) {
     var result = false;
     for (var i = object2.length - 1; i >= 0; i--) {
-        if (object2[i].value == elem.technology) {
+        if (object2[i].value === elem.technology) {
             result = true;
         }
     }
@@ -54,22 +37,18 @@ function someIncludeTech(elem, object2) {
 
 //Фільтр-функції
 function filtrCinemas(cinemas) {
-    console.log(cinemas);
     for (var i = allSessions.length - 1; i >= 0; i--) {
         if (!someIncludeCinema(allSessions[i], cinemas)) {
             allSessions.splice(i, 1);
         }
     }
 }
-function filtrTechnologies(technology) {
-    console.log(technology);
-    console.log(allSessions);
+function filtrTechnologies(technology) {  
     for (var i = allSessions.length - 1; i >= 0; i--) {
         if (!someIncludeTech(allSessions[i], technology)) {
             allSessions.splice(i, 1);
         }
     }
-    console.log(allSessions);
 }
 function sortByPrice() {
     allSessions.sort((a, b) => a.price - b.price);
@@ -84,7 +63,7 @@ function sortByTime() {
 function sortByCinemaRate(cinemas) {
     //Додаю поле rate в сесії, щоб посортувати їх
     for (var i = 0; i < allSessions.length; i++) {
-        allSessions[i]['rate'] = cinemasRate[allSessions[i].cinema]
+        allSessions[i]['rate'] = this.state.cinemasRate[allSessions[i].cinema]
     }
 
     allSessions.sort((a, b) => b.rate - a.rate);
@@ -105,12 +84,13 @@ class MoviePage extends React.Component {
         sortedByPrice: false,
         sortedByTime: false,
         sortedByCinemaRate: false,
-        allCinemas: [],
+        allCinemas: [],       
         sessionTodayFilm: [],
         sessionsClicked: false,
         countDate: 0,
         copyAllSessions: true,
-        isClickedToClear: false
+        isClickedToClear: false,
+        getCinemas: true
     }
 
     static getDerivedStateFromProps(props) {
@@ -122,24 +102,24 @@ class MoviePage extends React.Component {
     //Колбек функція для Dropdown.js, що повертає об'єкт
     //з обраним фільтром
     updateData = (id, value) => {
-        if (id == 2) {
+        if (id === 2) {
             this.setState({ cinemaChoosen: value });
             this.setState({ copyAllSessions: true });
         }
-        else if (id == 1) {
+        else if (id === 1) {
             if (value != null) {
                 this.setState({ technologyChoosen: value });
-                if (this.state.sortByPrice == false && this.state.sortByTime == false && this.state.sortByCinemaRate == false)
-                    if (this.state.cinemaChoosen.length == 0 || value.length > 1) {
+                if (this.state.sortByPrice === false && this.state.sortByTime === false && this.state.sortByCinemaRate === false)
+                    if (this.state.cinemaChoosen.length === 0 || value.length > 1) {
                         this.setState({ copyAllSessions: true })
                     }
             }
             else {
-                this.setState({ technologyChoosen: [], copyAllSessions: true });
+                this.setState({ technologyChoosen: [], copyAllSessions: true});
             }
 
         }
-        else if (value.value == 'Date') {
+        else if (value.value === 'Date') {
             this.setState({
                 sortByTime: true,
                 sortByPrice: false,
@@ -148,7 +128,7 @@ class MoviePage extends React.Component {
                 sortedByCinemaRate: false
             });
         }
-        else if (value.value == 'Price') {
+        else if (value.value === 'Price') {
             this.setState({
                 sortByPrice: true,
                 sortByTime: false,
@@ -157,7 +137,7 @@ class MoviePage extends React.Component {
                 sortedByCinemaRate: false
             });
         }
-        else if (value.value == 'CinemaRate') {
+        else if (value.value === 'CinemaRate') {
             this.setState({
                 sortByCinemaRate: true,
                 sortByTime: false,
@@ -166,7 +146,7 @@ class MoviePage extends React.Component {
                 sortedByPrice: false
             });
         }
-        else if (value.id == 'finish') {
+        else if (value.id === 'finish') {
             this.setState({
                 isClickedToClear: false,
                 sessionsClicked: false
@@ -179,10 +159,8 @@ class MoviePage extends React.Component {
     //зі string => date
     makeDate = (session_list_to_date) => {
         let list = [];
-        console.log(session_list_to_date.length);
         for (var i = 0; i < session_list_to_date.length; i++) {
             let temp = session_list_to_date[i]
-            const now = new Date();
             let date = new Date(temp.start_time)
             temp.start_time = date;
             list.push(temp)
@@ -190,10 +168,24 @@ class MoviePage extends React.Component {
         this.setState({ sessionTodayFilm: list });
     }
 
+    //Записує в allCinemas всі кінотатри
+    getCinemas = () => {
+        const url = 'https://ekinoback.herokuapp.com/cinemas';
+        fetch(url)
+            .then((data) => data.json())
+            .then((data) => {
+                this.setState({ allCinemas: data, getCinemas: false })
+            });
+
+        for (var i = 0; i < this.state.allCinemas.length; i++) {
+            cinemasRate[this.state.allCinemas[i].place_id] = this.state.allCinemas[i].rating;
+        }
+    }
+
     //Визивається в onClick в кнопці
     //і робить запит на сеанси сьогоднішні на кіно обране на mainpage
     getSessions = (filmChoosen) => {
-        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/2020/27/04/sessions';
+        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/'+ year +'/'+ day +'/'+ month +'/sessions';
         fetch(url)
             .then((data) => data.json())
             .then((data) => {
@@ -212,7 +204,12 @@ class MoviePage extends React.Component {
             sortByCinemaRate: false,
             isClickedToClear: true,
             sessionsClicked: false,
-            copyAllSessions: true
+            copyAllSessions: true,
+            sortedByPrice: false,
+            sortedByTime: false,
+            sortedByCinemaRate: false,
+            sessionTodayFilm: [],
+            countDate: 0,
         });
 
     }
@@ -221,29 +218,25 @@ class MoviePage extends React.Component {
     filtrSessions(list) {
         //Робить у стейт-масиві sessionTodayFilm
         //зі string => date
-        if (this.state.countDate == 0) {
+        if (this.state.countDate === 0) {
             this.makeDate(this.state.sessionTodayFilm)
             this.setState({ countDate: 1 });
         }
         //Копіюю sessionTodayFilm у allSessions
         if (this.state.copyAllSessions) {
-            console.log("CopySessions")
             allSessions = [];
             allSessions = JSON.parse(JSON.stringify(list));
             this.setState({ copyAllSessions: false });
         }
 
         //Видаляє з allSessions непотрібні кінотеатри
-        if (this.state.cinemaChoosen.length != 0) {
-            console.log(this.state.cinemaChoosen);
+        if (this.state.cinemaChoosen.length !== 0) {
             filtrCinemas(this.state.cinemaChoosen);
-            console.log("filtrCinemas");
 
         }
         //Видаляє з allSessions непотрібні технології
-        if (this.state.technologyChoosen.length != 0) {
+        if (this.state.technologyChoosen.length !== 0) {
             filtrTechnologies(this.state.technologyChoosen);
-            console.log("filtrTech");
         }
         //Сортування по ціні
         if (this.state.sortByPrice && !this.state.sortedByPrice) {
@@ -260,7 +253,7 @@ class MoviePage extends React.Component {
         }
         //Сортування по рейтингу кінотеатрів
         if (this.state.sortByCinemaRate && !this.state.sortedByCinemaRate) {
-            sortByCinemaRate(allCinemas);
+            sortByCinemaRate(this.state.allCinemas);
             this.setState({ copyAllSessions: false });
             this.setState({ sortedByCinemaRate: true });
         }
@@ -272,7 +265,14 @@ class MoviePage extends React.Component {
     render() {
         let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
-        console.log(elemToRender);
+        year = elemToRender.date.year;
+        day = elemToRender.date.day;
+        month = elemToRender.date.month;
+        console.log (year, day, month, id);
+        if(this.state.getCinemas){
+            this.getCinemas();
+        }
+
 
         //Якщо натиснуто кнопку 'знайти сеанси' робиться запит у функції getSessions
         //на усі сеанси сьогодні на обраний фільм з попередньої сторінки
@@ -288,7 +288,7 @@ class MoviePage extends React.Component {
                 <div style={{ marginTop: '40px' }}>
                     <div className="poster-trailer-desription-buttons1">
                         <div className="poster-trailer-desription1">
-                            <Poster_trailer
+                            <PosterTrailer
                                 poster_link={elemToRender.poster_link}
                                 trailer_link={elemToRender.trailer_link}
                             />
@@ -296,7 +296,7 @@ class MoviePage extends React.Component {
                         </div>
                         <div className="Sessions1">Сеанси</div>
                         <div className='dropdown-sortButton'>
-                            <Dropdown cinemas={allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
+                            <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
                             <button className='delete-button' onClick={this.clearAllButton}>
                                 <FontAwesomeIcon icon={faTrashAlt} />
                             </button>
@@ -308,7 +308,7 @@ class MoviePage extends React.Component {
                             <SessionList
                                 clicked={this.state.sessionsClicked}
                                 film={Object.entries(elemToRender)}
-                                cinemas={allCinemas}
+                                cinemas={this.state.allCinemas}
                                 sessions={allSessions}
                             />
                         </div>

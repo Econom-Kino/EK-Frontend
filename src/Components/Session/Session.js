@@ -7,10 +7,6 @@ import { faVrCardboard } from "@fortawesome/free-solid-svg-icons";
 import { faTint } from "@fortawesome/free-solid-svg-icons";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
 
-
-
-
-
 class Session extends React.Component {
     state = {
         alldata: true,
@@ -21,11 +17,11 @@ class Session extends React.Component {
         let hours = date.getHours();
         var minutes = date.getMinutes();
         var glasses = true;    
-        if(this.props.tech == '2D'){
+        if(this.props.tech === '2D'){
             glasses = false;
         }
         var fourdx = false
-        if(this.props.tech == '4DX'){
+        if(this.props.tech === '4DX'){
             fourdx = true;
         }
         if (this.props.isClicked){            
@@ -42,11 +38,11 @@ class Session extends React.Component {
                                 <div className="session__inner__price">
                                     {this.props.tech}{' '}
                                     {glasses && <FontAwesomeIcon icon={faVrCardboard} color={"#4b57c3"}/>}{' '}
-                                    {fourdx && <FontAwesomeIcon icon={faTint} color={"#4493cc"}/>}{' '}
-                                    {fourdx && <FontAwesomeIcon icon={faWind} color={"#4493cc"}/>}
+                                    {fourdx && <FontAwesomeIcon icon={faTint} color={"#4b57c3"}/>}{' '}
+                                    {fourdx && <FontAwesomeIcon icon={faWind} color={"#4b57c3"}/>}
                                 </div>
                                 <div className="session__inner__cinemaname">                                    
-                                    {<img src={require('./camera1.png')} className="camera"/>}{this.props.cinema}                                  
+                                    {<img src={require('./camera1.png') } alt="Poster" className="camera"/>}{this.props.cinema}                                  
                                 </div>
                                 <div className="session__inner__buyticket">
                                      <a href={this.props.buyLink}>Купити квиток</a> 

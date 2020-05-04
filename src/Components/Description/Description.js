@@ -6,19 +6,19 @@ class Description extends React.Component {
 	var genre = ' ';
 	for (var i = 0; i < this.props.elemToRender.genre_names.length; i++) {
 		genre+=this.props.elemToRender.genre_names[i].name;
-		if(i != this.props.elemToRender.genre_names.length-1)
+		if(i !== this.props.elemToRender.genre_names.length-1)
 			genre+=", "
 	}
 	var actors = ' ';
-	for (var i = 0; i < this.props.elemToRender.actors_names.length; i++) {
+	for (i = 0; i < this.props.elemToRender.actors_names.length; i++) {
 		actors+=this.props.elemToRender.actors_names[i].name;
-		if(i != this.props.elemToRender.actors_names.length-1)
+		if(i !== this.props.elemToRender.actors_names.length-1)
 			actors+=", "
 	}
 	var studios = ' ';
-	for (var i = 0; i < this.props.elemToRender.studio_names.length; i++) {
+	for (i = 0; i < this.props.elemToRender.studio_names.length; i++) {
 		studios+=this.props.elemToRender.studio_names[i].name;
-		if(i != this.props.elemToRender.studio_names.length-1)
+		if(i !== this.props.elemToRender.studio_names.length-1)
 			studios+=", "
 	}
 

@@ -1,41 +1,15 @@
 import React from 'react';
 import Session from '../Session/Session';
 
-/*
-
-
-/*function sendRequest(method, url) {
-    return fetch(url).then(response => {
-        return response.json()
-    })
-}
-
-function writeData(array, cinemas) {
-    for (var i = 1; i <= array.length; i++) {
-        cinemas.push(array[i]);
-    }   
-}
-
-function getCinemas() {
-    sendRequest('GET', 'https://ekinoback.herokuapp.com/cinemas')
-        .then(data => writeData(data, cinemasList))
-        .catch(err => console.log(err))
-}
-
-/*function getSessionByMovieAndDate (film_id) {
-    var url = 'https://ekinoback.herokuapp.com/movies/'+film_id+'/date/2020/24/04/sessions'
-    sendRequest('GET', url)
-    .then(data => writeData(data, sessionList))
-    .catch(err => console.log(err)) 
-}*/
-
-
 function getCinemaName(cinemas, id){
     for (var i = cinemas.length-1; i >=0 ; i--) {
-        if(cinemas[i].place_id == id)
+        if(cinemas[i].place_id === id)
             return cinemas[i].name;
     }
 }
+
+let sessionsModified = [];
+
 class SessionsList extends React.Component {
 
     constructor(props) {
@@ -51,20 +25,29 @@ class SessionsList extends React.Component {
        return {sessions: props.sessions, film: props.film, cinemas: props.cinemas}
     }
 
+    makeObjectFromArray = () => {
+        sessionsModified = [];
+        for (var i = 0; i < this.state.sessions.length; i++) {
+            let temp = {id: i, session: this.state.sessions[i]};
+            sessionsModified.push(temp);
+        }
+    }
+    
     render(){
+        this.makeObjectFromArray();
     if (this.props.clicked){
         return(
             
                 <div>
-                    {this.state.sessions.map((session) => {
+                    {sessionsModified.map((value) => {
                         return (<Session
                         alldata={false}
                         isClicked={true}
-                        time={session.start_time}
-                        price={session.price}
-                        tech={session.technology}
-                        cinema={getCinemaName(this.state.cinemas, session.cinema)}
-                        buyLink={session.ticket_link}               
+                        time={value.session.start_time}
+                        price={value.session.price}
+                        tech={value.session.technology}
+                        cinema={getCinemaName(this.state.cinemas, value.session.cinema)}
+                        buyLink={value.session.ticket_link}               
                         />
                         )
                     })}
@@ -74,9 +57,6 @@ class SessionsList extends React.Component {
     else {
             return(<div></div>)
         }
-
-    
-
     }
 }
 
