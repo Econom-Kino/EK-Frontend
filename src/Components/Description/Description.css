@@ -1,0 +1,59 @@
+.film-description1 {
+    margin-left: 51px;
+}
+
+.description-left-and-right-together1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.description-fields1 {
+    display: flex;
+    flex-direction: column;
+    width: 355px;
+    height: 444px;
+}
+
+.film-name1 {
+    font-size: 48px;
+    color: #424242;
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 22px;
+    width: 840px;
+    height: 54px;
+}
+
+.left-text1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #424242;
+    margin-bottom: 22px;
+}
+
+.right-text1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #424242;
+    margin-bottom: 22px;
+}
+
+.describe-film1 {
+    /* position: absolute; */
+    width: 946px;
+    height: 131px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 40px;
+    color: #424242;
+}
+
+.Describe {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #424242;
+}

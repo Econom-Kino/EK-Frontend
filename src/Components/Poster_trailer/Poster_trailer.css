@@ -1,0 +1,52 @@
+.poster-trailer1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.poster1 {
+    width: 330px;
+    border: none;
+    border-radius: 35px;
+    box-shadow: 15px 15px 38px rgba(201, 201, 201, 0.7), -19px -19px 38px #FFFFFF;
+    margin-left: 70px;
+    margin-top: 5px;
+}
+
+.trailer-box1 {
+    display: block;
+    border-radius: 25px;
+    background: #EDEDED;
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 20px #FFFFFF;
+    font-family: sans-serif;
+    font-size: 32px;
+    color: #5F5F5F;
+    width: 330px;
+    height: 67px;
+    margin-left: 70px;
+    margin-top: 28.4px;
+    text-align: center;
+}
+
+.trailer-box1:before {
+    content: "";
+    display: inline-block;
+    min-height: inherit;
+    height: 100%;
+    vertical-align: middle;
+
+
+}
+
+.trailer-box1:hover {
+    color: #474747;
+    background: #d9d9d9;
+    box-shadow: 5px 5px 20px rgba(130, 130, 130, 0.5), -5px -5px 15px #FFFFFF;
+}
+
+.trailer-box1:active {
+    font-size: 31px;
+
+}
+
+

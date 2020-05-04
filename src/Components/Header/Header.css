@@ -1,0 +1,17 @@
+.header {
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 15px #FFFFFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.header__logo {
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 49px;
+    color: #5F5F5F;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+}
