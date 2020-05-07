@@ -42,6 +42,6 @@ class MapWrapper extends React.Component {
 
 
 export default GoogleApiWrapper({
-    apiKey: ("AIzaSyCb5wq8hg5maYc3FcIsJHFNwMa9S29D0dE"),
+    apiKey: (process.env.REACT_APP_API_KEY),
     language: 'uk'
 })(MapWrapper)

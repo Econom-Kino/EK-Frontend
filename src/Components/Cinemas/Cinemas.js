@@ -12,7 +12,7 @@ class Cinemas extends React.Component {
     constructor(props) {
         super(props);
 
-        this.key = 'AIzaSyCb5wq8hg5maYc3FcIsJHFNwMa9S29D0dE';
+        this.key = process.env.REACT_APP_API_KEY;
         this.proxyurl = "https://cors-anywhere.herokuapp.com/";
 
         this.state = {
