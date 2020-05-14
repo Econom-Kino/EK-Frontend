@@ -13,7 +13,6 @@ var id = 0;
 var year;
 var day;
 var month;
-var anounce_bool = 0;
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
@@ -91,7 +90,8 @@ class MoviePage extends React.Component {
         countDate: 0,
         copyAllSessions: true,
         isClickedToClear: false,
-        getCinemas: true
+        getCinemas: true,
+        anounce_bool: 0
     }
 
     static getDerivedStateFromProps(props) {
@@ -268,9 +268,10 @@ class MoviePage extends React.Component {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
+            this.setState({ anounce_bool: 0 });
         }
         else {
-            anounce_bool = 1;
+            this.setState({ anounce_bool: 1 });
         }
         if (this.state.getCinemas) {
             this.getCinemas();
@@ -297,7 +298,7 @@ class MoviePage extends React.Component {
                             />
                             <Description elemToRender={elemToRender} />
                         </div>
-                        {!anounce_bool && <div>
+                        {!this.state.anounce_bool && <div>
                             <div className="Sessions1">Сеанси</div>
                             <div className='dropdown-sortButton'>
                                 <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
