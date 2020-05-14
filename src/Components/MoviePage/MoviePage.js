@@ -44,7 +44,7 @@ function filtrCinemas(cinemas) {
         }
     }
 }
-function filtrTechnologies(technology) {  
+function filtrTechnologies(technology) {
     for (var i = allSessions.length - 1; i >= 0; i--) {
         if (!someIncludeTech(allSessions[i], technology)) {
             allSessions.splice(i, 1);
@@ -85,7 +85,7 @@ class MoviePage extends React.Component {
         sortedByPrice: false,
         sortedByTime: false,
         sortedByCinemaRate: false,
-        allCinemas: [],       
+        allCinemas: [],
         sessionTodayFilm: [],
         sessionsClicked: false,
         countDate: 0,
@@ -116,7 +116,7 @@ class MoviePage extends React.Component {
                     }
             }
             else {
-                this.setState({ technologyChoosen: [], copyAllSessions: true});
+                this.setState({ technologyChoosen: [], copyAllSessions: true });
             }
 
         }
@@ -186,7 +186,7 @@ class MoviePage extends React.Component {
     //Визивається в onClick в кнопці
     //і робить запит на сеанси сьогоднішні на кіно обране на mainpage
     getSessions = (filmChoosen) => {
-        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/'+ year +'/'+ day +'/'+ month +'/sessions';
+        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/' + year + '/' + day + '/' + month + '/sessions';
         fetch(url)
             .then((data) => data.json())
             .then((data) => {
@@ -264,7 +264,7 @@ class MoviePage extends React.Component {
     render() {
         let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
-        if (elemToRender.hasOwnProperty('date')){
+        if (elemToRender.hasOwnProperty('date')) {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
@@ -272,7 +272,7 @@ class MoviePage extends React.Component {
         else {
             anounce_bool = 1;
         }
-        if(this.state.getCinemas){
+        if (this.state.getCinemas) {
             this.getCinemas();
         }
 
@@ -287,7 +287,7 @@ class MoviePage extends React.Component {
         }
 
         return (
-            <div>
+            <div className='container'>
                 <div style={{ marginTop: '40px' }}>
                     <div className="poster-trailer-desription-buttons1">
                         <div className="poster-trailer-desription1">
