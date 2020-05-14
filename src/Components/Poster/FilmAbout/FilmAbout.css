@@ -1,0 +1,25 @@
+.film_about_p {
+    margin: 0;
+    margin-bottom: 5px;
+    width: 175px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.film_about_p:last-child{
+    margin-bottom: 0;
+}
+
+
+.film__about {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    position: absolute;
+    max-width: 190px;
+    padding-top: 37px;
+    padding-left: 14px;
+    z-index: 20;
+}

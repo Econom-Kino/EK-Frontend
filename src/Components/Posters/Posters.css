@@ -1,0 +1,30 @@
+.posters__list {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    padding-top: 40px;
+    padding-bottom: 25px;
+}
+
+.posters__btn__inner {
+    text-align: center;
+}
+
+.posters__btn {
+    font-size: 22px;
+    line-height: 28px;
+    color: #5F5F5F;
+}
+
+.posters__btn:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.poster {
+    margin-right: 26px;
+}
+
+.poster:last-child {
+    margin-right: 0;
+}

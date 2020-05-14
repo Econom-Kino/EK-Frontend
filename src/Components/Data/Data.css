@@ -1,0 +1,95 @@
+.data__inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.data {
+    padding-top: 74px;
+}
+
+.data__search {
+    margin-right: 30px;
+}
+
+.data__search__input {
+    background: #EDEDED;
+    box-shadow: inset 2px 2px 5px rgba(191, 191, 191, 0.7), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    color: #919191;
+    box-sizing: border-box;
+    font-size: 21px;
+    line-height: 25px;
+    padding-top: 12px;
+    padding-bottom: 13px;
+    width: 282px;
+    padding-left: 20px;
+}
+
+
+.search__btn {
+    outline: none;
+    border: none;
+    margin-left: 15px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, #EDEDED, #EDEDED), linear-gradient(343.26deg, #FEFEFE 7.98%, #D5D5D5 92.49%);
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 15px #FFFFFF;
+    border-radius: 25px;
+}
+
+.data__list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.databutton {
+    margin-right: 20px;
+}
+
+.databutton:last-child {
+    margin-right: 0;
+}
+
+
+.databutton__btn {
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(0deg, #EDEDED, #EDEDED), linear-gradient(343.26deg, #FEFEFE 7.98%, #D5D5D5 92.49%);
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 15px #FFFFFF;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    padding: 6px 5px 6px 4px;
+
+}
+
+.databutton__btn:hover,.search__btn:hover {
+    background: linear-gradient(351.96deg, #FEFEFE 14.56%, #D5D5D5 88.22%);
+    box-shadow: 5px 5px 20px rgba(201, 201, 201, 0.5), -5px -5px 15px #FFFFFF;
+    cursor: pointer;
+}
+
+.notweekenddata {
+    color: #5F5F5F;
+}
+
+.weekenddata {
+    color: #EA0000;
+}
+
+.alldata {
+    width: 74px;
+}
+
+.active__btn, .databutton__btn:focus, .search__btn:focus{
+    background: linear-gradient(0deg, #EDEDED, #EDEDED), linear-gradient(343.26deg, #FEFEFE 7.98%, #D5D5D5 92.49%);
+    box-shadow: inset -5px -5px 10px rgba(255, 255, 255, 0.7), inset 2px 2px 5px rgba(191, 191, 191, 0.7);
+}

@@ -1,0 +1,40 @@
+.button__container__arrow {
+    z-index: 1000;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    width: 75px;
+    border-radius: 100%;   
+    background: #EDEDED;
+    box-shadow: -19px -19px 38px #FFFFFF, 19px 19px 38px #C9C9C9;    
+}
+
+
+.arrowprev {
+    margin-right: 15px;
+}
+
+.button__wrapper__arrow {
+    position: relative;
+}
+
+.left {
+    bottom: -250px;
+    left: -80px;
+    margin-right: 15px;
+}
+
+.right {
+    top: -260px;
+    right: -80px;
+}
+
+.arrownext {
+    margin-left: 15px;
+}
+
+.arrowprev:hover,.arrownext:hover {
+    cursor: pointer;
+}

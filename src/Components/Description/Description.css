@@ -1,0 +1,57 @@
+.film-description1 {
+    margin-left: 51px;
+    max-width: 100%;
+}
+
+.description-left-and-right-together1 {
+    display: grid;
+    width: 100%;
+}
+
+.description-row {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    width: 100%;
+}
+
+.film-name1 {
+    font-size: 48px;
+    color: #424242;
+    font-weight: normal;
+    font-style: normal;
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+.left-text1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #424242;
+    margin-bottom: 22px;
+}
+
+.right-text1 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #424242;
+    margin-bottom: 22px;
+}
+
+.describe-film1 {
+    /* position: absolute; */
+    
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 40px;
+    color: #424242;
+}
+
+.Describe {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #424242;
+}
