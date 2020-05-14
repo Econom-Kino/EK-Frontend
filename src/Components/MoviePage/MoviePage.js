@@ -13,6 +13,7 @@ var id = 0;
 var year;
 var day;
 var month;
+var anounce_bool = 0;
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
@@ -63,7 +64,7 @@ function sortByTime() {
 function sortByCinemaRate(cinemas) {
     //Додаю поле rate в сесії, щоб посортувати їх
     for (var i = 0; i < allSessions.length; i++) {
-        allSessions[i]['rate'] = this.state.cinemasRate[allSessions[i].cinema]
+        allSessions[i]['rate'] = cinemasRate[allSessions[i].cinema]
     }
 
     allSessions.sort((a, b) => b.rate - a.rate);
@@ -191,8 +192,6 @@ class MoviePage extends React.Component {
             .then((data) => {
                 this.setState({ sessionTodayFilm: data, sessionsClicked: true })
             });
-
-
     }
 
     clearAllButton = () => {
@@ -265,10 +264,14 @@ class MoviePage extends React.Component {
     render() {
         let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
-        year = elemToRender.date.year;
-        day = elemToRender.date.day;
-        month = elemToRender.date.month;
-        console.log (year, day, month, id);
+        if (elemToRender.hasOwnProperty('date')){
+            year = elemToRender.date.year;
+            day = elemToRender.date.day;
+            month = elemToRender.date.month;
+        }
+        else {
+            anounce_bool = 1;
+        }
         if(this.state.getCinemas){
             this.getCinemas();
         }
@@ -294,24 +297,26 @@ class MoviePage extends React.Component {
                             />
                             <Description elemToRender={elemToRender} />
                         </div>
-                        <div className="Sessions1">Сеанси</div>
-                        <div className='dropdown-sortButton'>
-                            <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
-                            <button className='delete-button' onClick={this.clearAllButton}>
-                                <FontAwesomeIcon icon={faTrashAlt} />
-                            </button>
-                            <button className='sort-button' onClick={this.getSessions}>
-                                Знайти сеанси
-                            </button>
-                        </div>
-                        <div>
-                            <SessionList
-                                clicked={this.state.sessionsClicked}
-                                film={Object.entries(elemToRender)}
-                                cinemas={this.state.allCinemas}
-                                sessions={allSessions}
-                            />
-                        </div>
+                        {!anounce_bool && <div>
+                            <div className="Sessions1">Сеанси</div>
+                            <div className='dropdown-sortButton'>
+                                <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
+                                <button className='delete-button' onClick={this.clearAllButton}>
+                                    <FontAwesomeIcon icon={faTrashAlt} />
+                                </button>
+                                <button className='sort-button' onClick={this.getSessions}>
+                                    Знайти сеанси
+                                </button>
+                            </div>
+                            <div>
+                                <SessionList
+                                    clicked={this.state.sessionsClicked}
+                                    film={Object.entries(elemToRender)}
+                                    cinemas={this.state.allCinemas}
+                                    sessions={allSessions}
+                                />
+                            </div>
+                        </div>}
                     </div>
                 </div>
             </div>

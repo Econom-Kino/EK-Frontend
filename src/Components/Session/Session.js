@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVrCardboard } from "@fortawesome/free-solid-svg-icons";
 import { faTint } from "@fortawesome/free-solid-svg-icons";
 import { faWind } from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard } from "@fortawesome/free-regular-svg-icons";
+
 
 class Session extends React.Component {
     state = {
@@ -27,13 +29,12 @@ class Session extends React.Component {
         if (this.props.isClicked){            
                 return (
                     <div className="session">
-                        <div className="container">
                             <div className="session__inner">
                                 <div className="session__inner__time" style={{alignSelf: 'flex-start'}}>
                                     <FontAwesomeIcon icon={faClock} color={'rgb(0,0,0)'}/>  {'   '}{hours}:{minutes}0  {this.props.alldata && <span>- 23.03.2020</span>}
                                 </div>
                                 <div className="session__inner__price" >
-                                    <FontAwesomeIcon icon={faMoneyBillWaveAlt} color={"#427d2d"}/> {this.props.price} грн.
+                                    <FontAwesomeIcon icon={faCreditCard} color={"#427d2d"}/> {this.props.price} грн.
                                 </div>
                                 <div className="session__inner__price">
                                     {this.props.tech}{' '}
@@ -48,7 +49,6 @@ class Session extends React.Component {
                                      <a href={this.props.buyLink}>Купити квиток</a> 
                                 </div>
                             </div>
-                        </div>
                     </div>
                 )            
         }

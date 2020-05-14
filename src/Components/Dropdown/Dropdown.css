@@ -1,11 +1,10 @@
 .Dropdown-buttons {
 	display: flex;
     flex-direction: row;
-	margin-left: 160px;
 }
 
 .item {
-	margin-left: 15px;
+	margin-right: 15px;
 }
 
 .text {
