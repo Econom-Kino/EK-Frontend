@@ -6,7 +6,7 @@ import './Dropdown.css';
 const options0 = [
     /*{ value: 'Smart sort', label: 'Розумне сортування' },*/
     { value: 'Date', label: 'Найближчі сеанси' },
-    { value: 'Price', label: 'Ціна' },
+    { value: 'Price', label: 'Ціна               '  },
     { value: 'CinemaRate', label: 'Рейтинг кінотетатра' },
 ];
 

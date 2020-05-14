@@ -13,7 +13,6 @@ var id = 0;
 var year;
 var day;
 var month;
-var anounce_bool = 0;
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
@@ -44,7 +43,7 @@ function filtrCinemas(cinemas) {
         }
     }
 }
-function filtrTechnologies(technology) {  
+function filtrTechnologies(technology) {
     for (var i = allSessions.length - 1; i >= 0; i--) {
         if (!someIncludeTech(allSessions[i], technology)) {
             allSessions.splice(i, 1);
@@ -85,13 +84,14 @@ class MoviePage extends React.Component {
         sortedByPrice: false,
         sortedByTime: false,
         sortedByCinemaRate: false,
-        allCinemas: [],       
+        allCinemas: [],
         sessionTodayFilm: [],
         sessionsClicked: false,
         countDate: 0,
         copyAllSessions: true,
         isClickedToClear: false,
-        getCinemas: true
+        getCinemas: true,
+        anounce_bool: 0
     }
 
     static getDerivedStateFromProps(props) {
@@ -116,7 +116,7 @@ class MoviePage extends React.Component {
                     }
             }
             else {
-                this.setState({ technologyChoosen: [], copyAllSessions: true});
+                this.setState({ technologyChoosen: [], copyAllSessions: true });
             }
 
         }
@@ -186,7 +186,7 @@ class MoviePage extends React.Component {
     //Визивається в onClick в кнопці
     //і робить запит на сеанси сьогоднішні на кіно обране на mainpage
     getSessions = (filmChoosen) => {
-        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/'+ year +'/'+ day +'/'+ month +'/sessions';
+        const url = 'https://ekinoback.herokuapp.com/movies/' + id + '/date/' + year + '/' + day + '/' + month + '/sessions';
         fetch(url)
             .then((data) => data.json())
             .then((data) => {
@@ -264,15 +264,16 @@ class MoviePage extends React.Component {
     render() {
         let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
-        if (elemToRender.hasOwnProperty('date')){
+        if (elemToRender.hasOwnProperty('date')) {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
+            this.setState({ anounce_bool: 0 });
         }
         else {
-            anounce_bool = 1;
+            this.setState({ anounce_bool: 1 });
         }
-        if(this.state.getCinemas){
+        if (this.state.getCinemas) {
             this.getCinemas();
         }
 
@@ -287,7 +288,7 @@ class MoviePage extends React.Component {
         }
 
         return (
-            <div>
+            <div className='container'>
                 <div style={{ marginTop: '40px' }}>
                     <div className="poster-trailer-desription-buttons1">
                         <div className="poster-trailer-desription1">
@@ -297,7 +298,7 @@ class MoviePage extends React.Component {
                             />
                             <Description elemToRender={elemToRender} />
                         </div>
-                        {!anounce_bool && <div>
+                        {!this.state.anounce_bool && <div>
                             <div className="Sessions1">Сеанси</div>
                             <div className='dropdown-sortButton'>
                                 <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />

@@ -1,10 +1,9 @@
 .session {
-    margin-top: 50px;
+    margin-top: 36px;
     font-size: 28px;
     line-height: 33px;
     color: #5F5F5F;
-    margin-bottom: 36px;
-    
+    margin-bottom: 20px;
 }
 
 .session:last-child {
@@ -22,15 +21,17 @@
     grid-template-columns:  13% 17% 18% 35% 17%;
     grid-template-rows: 1;
     justify-items: start;
+    color: #363636;
 }
 
 .session__inner__cinemaname , .session__inner__buyticket {
     text-decoration-line: underline;
+    color: #495057;
 
 }
 
 .session__inner__buyticket a {
-    color: #5F5F5F;
+    color:  #495057;
 }
 
 .camera {
