@@ -13,9 +13,6 @@ var id = 0; // id фільму
 var year; //рік який обрав юзер
 var day; //день який обрав юзер
 var month; //місяць який обрав юзер
-var anounce_bool = 0; //змінна що означає чи анонси рендерити чи не анонси
-var page_opened = 1; //змінна що стає 0 коли сторінку було відкрито
-
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
@@ -94,7 +91,9 @@ class MoviePage extends React.Component {
         copyAllSessions: true, // Чи треба у функції filtrSessions наново заповнити allSessions
         isClickedToClear: false, //Чи натиснено на кнопку clear
         getCinemas: true, //Чи було зроблено запит на кінотеатри
-        rate_bool: 1 //Чи записано рейтинг у cinemasRate
+        rate_bool: 1, //Чи записано рейтинг у cinemasRate
+        page_opened: 1, //змінна що стає 0 коли сторінку було відкрито
+        anounce_bool: 1 //змінна що означає чи анонси рендерити чи не анонси
     }
 
     static getDerivedStateFromProps(props) {
@@ -191,6 +190,8 @@ class MoviePage extends React.Component {
             .then((data) => {
                 this.setState({ sessionTodayFilm: data, sessionsClicked: true })
             });
+            console.log('lol1');
+            console.log(year, day, month);
     }
 
     clearAllButton = () => {
@@ -265,15 +266,13 @@ class MoviePage extends React.Component {
         id = elemToRender.id //Айдішка фільму з main page
 
         //Якщо масив elemToRender містить атрибут date то це не анонси і дату записуємо 
-        if (elemToRender.hasOwnProperty('date')) {
+        if (elemToRender.hasOwnProperty('date') && this.state.anounce_bool !== 0) {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
-            anounce_bool = 0;
+            this.setState({anounce_bool: 0});
         }
-        else {
-            anounce_bool = 1;
-        }
+        
 
         if (this.state.getCinemas) {
             this.getCinemas();
@@ -287,10 +286,10 @@ class MoviePage extends React.Component {
             }
             this.setState({rate_bool: 1});           
         }
-
-        if (page_opened){
+        console.log(this.state.page_opened);
+        if (this.state.page_opened){
             this.getSessions();
-            page_opened = 0;
+            this.setState({page_opened : 0});
         }
 
         //Якщо натиснуто кнопку 'знайти сеанси' робиться запит у функції getSessions
@@ -313,7 +312,7 @@ class MoviePage extends React.Component {
                             />
                             <Description elemToRender={elemToRender} />
                         </div>
-                        {!anounce_bool && <div>
+                        {!this.state.anounce_bool && <div>
                             <div className="Sessions1">Сеанси</div>
                             <div className='dropdown-sortButton'>
                                 <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
