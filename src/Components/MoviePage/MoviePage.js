@@ -64,15 +64,12 @@ function sortByTime() {
     allSessions.sort((a, b) => a.start_time.getHours() - b.start_time.getHours());
 }
 function sortByCinemaRate(cinemas) {
-    console.log(allSessions);
     //Додаю поле rate в сесії, щоб посортувати їх
     for (var i = 0; i < allSessions.length; i++) {
         allSessions[i]['rate'] = cinemasRate[allSessions[i].cinema]
     }
 
     allSessions.sort((a, b) => b.rate - a.rate);
-    console.log(allSessions);
-    console.log("And here");
 }
 //Кінець фільтр-функцій
 
@@ -257,7 +254,6 @@ class MoviePage extends React.Component {
             sortByCinemaRate(this.state.allCinemas);
             this.setState({ copyAllSessions: false });
             this.setState({ sortedByCinemaRate: true });
-            console.log('Here go');
         }
 
     }
@@ -286,7 +282,6 @@ class MoviePage extends React.Component {
         }
 
         if (!this.state.rate_bool && this.state.allCinemas.length !== 0){
-            console.log(this.state.allCinemas);
             for (var i = 0; i < this.state.allCinemas.length; i++) {
                 cinemasRate[this.state.allCinemas[i].place_id] = this.state.allCinemas[i].rating;
             }
