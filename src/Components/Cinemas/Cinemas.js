@@ -70,7 +70,7 @@ class Cinemas extends React.Component {
     }
 
     cinemas = [
-        { placeId: 'ChIJl3xz8QnnOkcReSOln9d6RqY', cinemaLogoSrc: 'viktoria', bgText: 'Multiplex: Viktoria Gargens' },
+        { placeId: 'ChIJl3xz8QnnOkcReSOln9d6RqY', cinemaLogoSrc: 'viktoria', bgText: 'Multiplex: Viktoria Gardens' },
         { placeId: 'ChIJ4dGDScndOkcRK6iYsuY5rCk', cinemaLogoSrc: 'spartak', bgText: 'Multiplex: Spartak' },
         { placeId: 'ChIJG3CADybmOkcRkBn2_jOgbyA', cinemaLogoSrc: 'king_cross', bgText: 'Планета Кіно: King Cross' },
         { placeId: 'ChIJif8CqgvdOkcRxDok8ta8w7Y', cinemaLogoSrc: 'forum', bgText: 'Планета Кіно: Forum Lviv' },
