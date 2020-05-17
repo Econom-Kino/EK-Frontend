@@ -7,13 +7,12 @@ import SessionList from '../SessionList/SessionsList';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-let cinemasRate = {};
-let allSessions = [];
-var id = 0;
-var year;
-var day;
-var month;
-var anounce_bool = 0;
+let cinemasRate = {}; // рейтинги кінотеатрів в зручному форматі
+let allSessions = []; //ecs ctfycb
+var id = 0; // id фільму
+var year; //рік який обрав юзер
+var day; //день який обрав юзер
+var month; //місяць який обрав юзер
 
 //Перевіряє чи є у об'єкті elem значення з object2
 function someIncludeCinema(elem, object2) {
@@ -85,13 +84,16 @@ class MoviePage extends React.Component {
         sortedByPrice: false,
         sortedByTime: false,
         sortedByCinemaRate: false,
-        allCinemas: [],
         sessionTodayFilm: [],
-        sessionsClicked: false,
-        countDate: 0,
-        copyAllSessions: true,
-        isClickedToClear: false,
-        getCinemas: true
+        allCinemas: [],
+        sessionsClicked: false, //Чи натиснуто кнопку знайти сеанси
+        countDate: 0, //Чи було поформатовано дати у sessionTodayFilm
+        copyAllSessions: true, // Чи треба у функції filtrSessions наново заповнити allSessions
+        isClickedToClear: false, //Чи натиснено на кнопку clear
+        getCinemas: true, //Чи було зроблено запит на кінотеатри
+        rate_bool: 1, //Чи записано рейтинг у cinemasRate
+        page_opened: 1, //змінна що стає 0 коли сторінку було відкрито
+        anounce_bool: 1 //змінна що означає чи анонси рендерити чи не анонси
     }
 
     static getDerivedStateFromProps(props) {
@@ -175,12 +177,8 @@ class MoviePage extends React.Component {
         fetch(url)
             .then((data) => data.json())
             .then((data) => {
-                this.setState({ allCinemas: data, getCinemas: false })
+                this.setState({ allCinemas: data})
             });
-
-        for (var i = 0; i < this.state.allCinemas.length; i++) {
-            cinemasRate[this.state.allCinemas[i].place_id] = this.state.allCinemas[i].rating;
-        }
     }
 
     //Визивається в onClick в кнопці
@@ -192,6 +190,8 @@ class MoviePage extends React.Component {
             .then((data) => {
                 this.setState({ sessionTodayFilm: data, sessionsClicked: true })
             });
+            console.log('lol1');
+            console.log(year, day, month);
     }
 
     clearAllButton = () => {
@@ -264,25 +264,39 @@ class MoviePage extends React.Component {
     render() {
         let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
-        if (elemToRender.hasOwnProperty('date')) {
+
+        //Якщо масив elemToRender містить атрибут date то це не анонси і дату записуємо 
+        if (elemToRender.hasOwnProperty('date') && this.state.anounce_bool !== 0) {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
-            anounce_bool = 0;
+            this.setState({anounce_bool: 0});
         }
-        else {
-            anounce_bool = 1;
-        }
+        
+
         if (this.state.getCinemas) {
             this.getCinemas();
+            this.setState({getCinemas: false}); 
+            this.setState({rate_bool: 0});           
         }
 
+        if (!this.state.rate_bool && this.state.allCinemas.length !== 0){
+            for (var i = 0; i < this.state.allCinemas.length; i++) {
+                cinemasRate[this.state.allCinemas[i].place_id] = this.state.allCinemas[i].rating;
+            }
+            this.setState({rate_bool: 1});           
+        }
+        console.log(this.state.page_opened);
+        if (this.state.page_opened){
+            this.getSessions();
+            this.setState({page_opened : 0});
+        }
 
         //Якщо натиснуто кнопку 'знайти сеанси' робиться запит у функції getSessions
         //на усі сеанси сьогодні на обраний фільм з попередньої сторінки
         //в цій же функції стейт-змінна sessionsClicked стає true
         //і в цій if внизу запускається функція filtrSessions, що фільтрує allSessions
-        //і залишає тіки те, що потрібно залишається
+        //і залишає тіки те, що потрібно залишити
         if (this.state.sessionsClicked) {
             this.filtrSessions(this.state.sessionTodayFilm);
         }
@@ -298,7 +312,7 @@ class MoviePage extends React.Component {
                             />
                             <Description elemToRender={elemToRender} />
                         </div>
-                        {!anounce_bool && <div>
+                        {!this.state.anounce_bool && <div>
                             <div className="Sessions1">Сеанси</div>
                             <div className='dropdown-sortButton'>
                                 <Dropdown cinemas={this.state.allCinemas} isClicked={this.state.isClickedToClear} updateData={this.updateData} />
