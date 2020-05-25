@@ -1,6 +1,5 @@
 .posters__list {
     display: flex;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     padding-top: 40px;
     padding-bottom: 25px;
@@ -22,9 +21,13 @@
 }
 
 .poster {
-    margin-right: 26px;
+    margin-right: 13px;
+    margin-left: 13px;
 }
 
-.poster:last-child {
-    margin-right: 0;
-}
+
+@media (max-width: 1320px) {
+    .posters__list {
+        justify-content: center;
+    }
+  }

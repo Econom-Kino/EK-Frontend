@@ -46,7 +46,6 @@ export default class MultipleItems extends Component {
                         localStorage.setItem('film', JSON.stringify(el));
                     }}
                     key={index * Math.random()}
-                    style={{ marginRight: '26px' }}
                     className='anonces__slider__item'>
                     <div className="anonces__slider__item-content" >
                         <Poster
@@ -59,7 +58,6 @@ export default class MultipleItems extends Component {
                             imdb={el.rating}
                             trailerLink={el.trailer_link}
                             id={el.id}
-                        // anonce={true}
                         />
                     </div>
                 </div>

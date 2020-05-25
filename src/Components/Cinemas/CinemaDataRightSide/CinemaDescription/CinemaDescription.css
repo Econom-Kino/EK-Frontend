@@ -63,3 +63,45 @@
 .websitelink:hover {
     cursor: pointer;
 }
+
+@media (max-width: 960px) {   
+
+    .cinema__description__location{
+        margin-top: 15px;
+    }
+
+    .cinema__description__site {
+        margin-top: 15px;
+    }
+    .cinema__description__tel {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 470px) {
+    .cinema__description {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .cinema__description__name {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .rate__number {
+        font-size: 20px;
+    }
+
+    .cinema__description__site  {
+        word-break: break-all;
+    }
+    
+
+    .cinema__description__rate, .cinema__description__site, 
+    .cinema__description__tel, .cinema__description__location {
+        padding-left: 20px;
+        font-size: 14px;
+    }
+}

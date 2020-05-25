@@ -25,3 +25,17 @@
     text-decoration-line: underline;
     cursor: pointer;
 }
+
+@media (max-width: 800px) {
+    .reviews__titel {
+        font-size: 20px;
+    }
+    
+    .reviews__btn {
+        font-size: 19px;
+    }
+
+    .reviews__btn__inner {
+        margin-top: 30px;
+    }
+}

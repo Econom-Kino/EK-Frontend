@@ -8,7 +8,7 @@
 }
 
 .data__search {
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 .data__search__input {
@@ -43,6 +43,7 @@
 }
 
 .data__list {
+    margin-left: 15px;
     display: flex;
     justify-content: space-between;
 }
@@ -99,6 +100,10 @@
 @media (max-width: 1320px) {
    .data__search {
        margin-right: 0;
+   }
+
+   .data__list {
+       margin-left: 0;
    }
 }
 

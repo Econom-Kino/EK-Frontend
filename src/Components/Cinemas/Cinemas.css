@@ -23,3 +23,20 @@
     justify-content: center;
     margin-top: 50px;
 }
+
+@media (max-width: 1320px) {
+    .cinemas__logo__list{
+        justify-content: center;
+    }
+
+    .cinema__logo__inner {
+        margin: 0 10px 20px 10px;
+    }
+}
+
+@media (max-width: 960px) {
+    .cinemas__data {
+        flex-direction: column;
+        align-items: center;
+    }
+}
