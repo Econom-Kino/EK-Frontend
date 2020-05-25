@@ -15,3 +15,23 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+
+@media (max-width: 1000px) {
+    .header__logo img {
+        height: 25px !important; 
+    }
+}
+
+@media (max-width: 550px) {
+    .header__inner {
+        display: block;
+    }
+
+    .header__logo {
+        display: flex;
+        justify-content: center;
+    }
+ }
+

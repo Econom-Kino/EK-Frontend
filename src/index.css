@@ -1,6 +1,6 @@
 body {
   margin: 0;
- 
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Roboto', sans-serif;
@@ -12,3 +12,10 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
+
+@media (max-width: 1320px) {
+  .container {
+    max-width: 1100px;
+  }
+}
+
