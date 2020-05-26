@@ -27,7 +27,7 @@
 }
 
 .right {
-    top: -260px;
+    top: -270px;
     right: -80px;
 }
 
@@ -37,4 +37,75 @@
 
 .arrowprev:hover,.arrownext:hover {
     cursor: pointer;
+}
+
+@media(max-width: 1625px) {
+    .button__container__arrow {
+        height: 55px;
+        width: 55px;
+    }
+    .button__container__arrow img {
+        width: 25px;
+    }
+
+    .right {
+        top: -250px;
+        right: -55px;
+    }
+
+    .left {
+        left: -55px;
+    }
+
+    .arrowprev {
+        margin-right: 10px;
+    }
+
+    .arrownext {
+        margin-left: 10px;
+    }
+
+}
+
+@media(max-width: 1500px) {
+    .right {
+        right: -55px;
+    }
+
+    .left {
+        left: -55px;
+    }
+}
+
+@media(max-width: 1000px) {
+    .right {
+        right: -55px;
+    }
+
+    .left {
+        left: -55px;
+    }
+}
+
+
+
+@media(max-width: 980px) {
+    .right {
+        right: -60px;
+    }
+
+    .left {
+        left: -60px;
+    }
+}
+
+
+@media(max-width: 780px) {
+    .right {
+        right: -55px;
+    }
+
+    .left {
+        left: -55px;
+    }
 }
