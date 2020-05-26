@@ -4,6 +4,7 @@
     color: #5F5F5F;
     text-align: center;
     margin-bottom: 38px;
+    margin-top: 30px;
 }
 
 .cinemas__logo__list {
@@ -32,11 +33,31 @@
     .cinema__logo__inner {
         margin: 0 10px 20px 10px;
     }
+
+
 }
 
 @media (max-width: 960px) {
     .cinemas__data {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .cinemas__tittel {
+        margin-bottom: 20px;
+        font-size: 32px;
+        margin-top: 30px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .cinemas__tittel {
+        margin-bottom: 10px;
+        font-size: 25px;
+        margin-top: 5px;
     }
 }

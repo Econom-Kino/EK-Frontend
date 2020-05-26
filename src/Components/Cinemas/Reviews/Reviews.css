@@ -26,6 +26,15 @@
     cursor: pointer;
 }
 
+@media (max-width: 960px) {
+    .reviews {
+        padding-top: 15px;
+        padding-bottom: 150px;
+    }
+}
+
+
+
 @media (max-width: 800px) {
     .reviews__titel {
         font-size: 20px;
@@ -37,5 +46,19 @@
 
     .reviews__btn__inner {
         margin-top: 30px;
+    }
+
+    .reviews {
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 500px) {
+    .reviews__btn {
+        font-size: 16px;
+    }
+
+    .reviews {
+        padding-bottom: 40px;
     }
 }

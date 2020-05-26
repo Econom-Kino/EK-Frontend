@@ -3,7 +3,22 @@
     height: 334px;
     box-shadow: 19px 19px 38px rgba(201, 201, 201, 0.7), -19px -19px 38px #FFFFFF;
     border-radius: 35px;
-    margin-bottom: 31px;
-    position: relative;
-    
+    margin-bottom: 35px;
+    position: relative;   
+}
+
+@media (max-width: 500px) {
+    .cinema__map {
+        width: 380px;
+        height: 254px;
+        margin: 0 auto 31px;
+    }
+}
+
+@media (max-width: 413px) {
+    .cinema__map {
+        margin-left: auto;
+        width: 310px;
+        height: 254px;
+    }
 }

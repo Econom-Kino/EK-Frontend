@@ -31,3 +31,9 @@
         justify-content: center;
     }
   }
+
+@media (max-width: 1000px) {
+    .posters__list {
+        padding-bottom: 0;
+    }
+}

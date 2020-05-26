@@ -86,7 +86,7 @@
     }
 
     .cinema__description__name {
-        text-align: center;
+        padding-left: 20px;
         font-size: 24px;
     }
 
