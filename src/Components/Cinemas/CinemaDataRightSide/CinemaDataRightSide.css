@@ -1,3 +1,17 @@
 .cinema__rightside {
     margin-left: 55px;
 }
+
+@media (max-width: 960px) {   
+    .cinema__rightside {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 460px) {   
+    .cinema__rightside {
+        margin-top: 10px;
+    }
+}

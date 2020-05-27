@@ -32,3 +32,37 @@
     line-height: 21px;
     margin-top: 20px;
 }
+
+@media (max-width: 800px) {
+
+    .authorname  {
+        font-size: 20px;
+    }
+
+    .author__avatar  {
+        width: 65px;
+        height: 65px;
+        margin-right: 10px;
+    }
+
+    .author__comment {
+        font-size: 13px;
+        line-height: 16px;
+        margin-top: 10px;
+    }
+    
+    .review {
+        margin-bottom: 10px;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .authorname  {
+        font-size: 17px;
+    }
+
+    .author__comment {
+        font-size: 10px;
+    }
+}

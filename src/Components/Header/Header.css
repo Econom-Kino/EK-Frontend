@@ -5,6 +5,7 @@
 }
 
 .header__logo {
+    padding-left: 15px;
     font-weight: 300;
     font-size: 42px;
     line-height: 49px;
@@ -15,3 +16,31 @@
     display: flex;
     justify-content: space-between;
 }
+
+.header__logo_ing {
+    height: 33px;
+}
+
+@media (max-width: 1320px) {
+    .header__logo {
+        padding-left: 0 !important;
+    }
+}
+
+@media (max-width: 1000px) {
+    .header__logo_ing {
+        height: 25px; 
+    }
+}
+
+@media (max-width: 550px) {
+    .header__inner {
+        display: block;
+    }
+
+    .header__logo {
+        display: flex;
+        justify-content: center;
+    }
+ }
+
