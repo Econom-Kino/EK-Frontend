@@ -74,7 +74,7 @@ class Posters extends React.Component {
                         localStorage.setItem('film', JSON.stringify(el));
                     }}
                     key={index * Math.random()}
-                    className='poster'>
+                >
                     <Poster
                         posterLink={el.poster_link}
                         filmName={el.name}

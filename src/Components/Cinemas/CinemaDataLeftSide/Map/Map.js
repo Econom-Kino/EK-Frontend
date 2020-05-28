@@ -9,8 +9,8 @@ class MapWrapper extends React.Component {
 
     render() {
         const style = {
-            width: '477px',
-            height: '334px',
+            width: 'inherit',
+            height: 'inherit',
             borderRadius: '35px',
             boxShadow: '19px 19px 38px rgba(201, 201, 201, 0.7), -19px -19px 38px #FFFFFF'
         }

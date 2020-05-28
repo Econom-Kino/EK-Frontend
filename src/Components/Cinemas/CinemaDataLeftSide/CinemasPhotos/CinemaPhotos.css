@@ -14,7 +14,7 @@
 .cinema__photos {
     display: flex;
     flex-wrap: wrap;
-    width: 477px;
+    max-width: 477px;
     justify-content: space-between;
 }
 
@@ -33,4 +33,23 @@
 
 .scale:hover {
     transform: scale(1.3); /* Збільшення маштабу */
+}
+
+
+@media (max-width: 960px) {
+    .cinema__photos {
+        justify-content: center;
+    }
+
+    .cinema__photo {
+        margin-right: 8px;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .cinema__photo, .cinema__img {
+        width: 130px;
+        height: 75px;
+    }
 }

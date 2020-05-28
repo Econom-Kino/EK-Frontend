@@ -1,5 +1,6 @@
 .navbar__ul {
     list-style: none;
+    padding-right: 15px;
 }
 
 .navbar__ul {
@@ -26,4 +27,22 @@
     text-decoration-line: underline;
     cursor: pointer;
     color: #F2994A;
+}
+
+
+@media (max-width: 1320px) {
+   .navbar__ul {
+       padding-right: 0;
+   }
+  }
+
+
+
+@media (max-width: 550px) {
+   .navbar__ul {
+       padding-left: 0;
+       justify-content: center;
+   }
+
+
 }
