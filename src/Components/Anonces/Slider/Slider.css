@@ -9,6 +9,13 @@
     padding-bottom: 20px;
 }
 
+.without__slider {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 @media(max-width: 1500px) {
     .slick-list {
         padding-left: 15px;
@@ -19,12 +26,21 @@
     .slick-list {
         padding-left: 25px;
     }
+
+    .without__slider {
+        margin-top: 30px;
+    }
 }
 
 @media(max-width: 980px) {
     .slick-list {
         padding-left: 28px;
     }
+
+    .without__slider {
+        margin-top: 20px;
+    }
+
 }
 
 @media(max-width: 780px) {

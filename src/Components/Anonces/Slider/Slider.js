@@ -102,10 +102,12 @@ export default class MultipleItems extends Component {
                 </div>
             )
         })
+
+        itemsToRender = itemsToRender.slice(0, 1);
         return (
             <div >
                 {itemsToRender.length < 6 ? (
-                    <div style={{ display: 'flex' }}>
+                    <div className="without__slider">
                         {itemsToRender}
                     </div>
                 ) :
