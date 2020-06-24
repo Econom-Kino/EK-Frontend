@@ -103,7 +103,6 @@ export default class MultipleItems extends Component {
             )
         })
 
-        itemsToRender = itemsToRender.slice(0, 1);
         return (
             <div >
                 {itemsToRender.length < 6 ? (
