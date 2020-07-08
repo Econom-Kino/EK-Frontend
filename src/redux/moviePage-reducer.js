@@ -8,11 +8,11 @@ let initialState = {
 export const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FILM:
-            return { ...state, films: [action.film] };
+            return { ...state, films: [action.payload] };
 
         default:
             return state;
     }
 }
 
-export const AddFilmCreator = (film) => ({ type: ADD_FILM, film: film });
+export const AddFilmCreator = (film) => ({ type: ADD_FILM, payload: film });

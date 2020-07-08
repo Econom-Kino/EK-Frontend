@@ -5,6 +5,7 @@ import Poster from '../Poster/Poster';
 import './Posters.css';
 import ShowMoreFilms from './ShowMoreFilms';
 import { AddFilmCreator } from '../../redux/moviePage-reducer';
+import { connect } from 'react-redux';
 
 
 class Posters extends React.Component {
@@ -17,9 +18,7 @@ class Posters extends React.Component {
     }
 
     addFilmToStore = (film) => {
-        this.props.state.moviePage.newFilm = film;
-        let action = AddFilmCreator(film);
-        this.props.store.dispatch(action);
+        this.props.AddFilmCreator(film);
     }
 
     showMoreFilms = () => {
@@ -122,4 +121,9 @@ class Posters extends React.Component {
     }
 }
 
-export default Posters;
+const mapDispatchToProps = {
+    AddFilmCreator,
+};
+
+
+export default connect(null, mapDispatchToProps)(Posters);

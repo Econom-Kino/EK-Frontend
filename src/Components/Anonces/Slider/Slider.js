@@ -3,15 +3,14 @@ import Poster from '../../Poster/Poster';
 import './Slider.css';
 import Slider from "react-slick";
 import { AddFilmCreator } from '../../../redux/moviePage-reducer';
+import { connect } from 'react-redux';
 
 import SliderArrow from './SliderArrow/SliderArrow';
 
-export default class MultipleItems extends Component {
+class MultipleItems extends Component {
 
     addFilmToStore = (film) => {
-        this.props.state.moviePage.newFilm = film;
-        let action = AddFilmCreator(film);
-        this.props.store.dispatch(action);
+        this.props.AddFilmCreator(film);
     }
 
     render() {
@@ -120,3 +119,10 @@ export default class MultipleItems extends Component {
         );
     }
 }
+
+const mapDispatchToProps = {
+    AddFilmCreator,
+};
+
+
+export default connect(null, mapDispatchToProps)(MultipleItems);

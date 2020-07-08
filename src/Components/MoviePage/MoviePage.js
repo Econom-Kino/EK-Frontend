@@ -6,6 +6,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import SessionList from '../SessionList/SessionsList';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from 'react-redux';
 
 let cinemasRate = {}; // рейтинги кінотеатрів в зручному форматі
 let allSessions = []; //ecs ctfycb
@@ -96,11 +97,11 @@ class MoviePage extends React.Component {
         anounce_bool: 1 //змінна що означає чи анонси рендерити чи не анонси
     }
 
-    static getDerivedStateFromProps(props) {
-        return {
-            film: props.state.moviePage.films,
-        };
-    }
+    // static getDerivedStateFromProps(props) {
+    //     return {
+    //         film: props.state.moviePage.films,
+    //     };
+    // }
 
     //Колбек функція для Dropdown.js, що повертає об'єкт
     //з обраним фільтром
@@ -177,7 +178,7 @@ class MoviePage extends React.Component {
         fetch(url)
             .then((data) => data.json())
             .then((data) => {
-                this.setState({ allCinemas: data})
+                this.setState({ allCinemas: data })
             });
     }
 
@@ -190,8 +191,6 @@ class MoviePage extends React.Component {
             .then((data) => {
                 this.setState({ sessionTodayFilm: data, sessionsClicked: true })
             });
-            console.log('lol1');
-            console.log(year, day, month);
     }
 
     clearAllButton = () => {
@@ -262,7 +261,7 @@ class MoviePage extends React.Component {
 
 
     render() {
-        let elemToRender = this.state.film[0]; //Інфа про фільм обраний на main page
+        let elemToRender = this.props.films[0]; //Інфа про фільм обраний на main page
         id = elemToRender.id //Айдішка фільму з main page
 
         //Якщо масив elemToRender містить атрибут date то це не анонси і дату записуємо 
@@ -270,26 +269,25 @@ class MoviePage extends React.Component {
             year = elemToRender.date.year;
             day = elemToRender.date.day;
             month = elemToRender.date.month;
-            this.setState({anounce_bool: 0});
+            this.setState({ anounce_bool: 0 });
         }
-        
+
 
         if (this.state.getCinemas) {
             this.getCinemas();
-            this.setState({getCinemas: false}); 
-            this.setState({rate_bool: 0});           
+            this.setState({ getCinemas: false });
+            this.setState({ rate_bool: 0 });
         }
 
-        if (!this.state.rate_bool && this.state.allCinemas.length !== 0){
+        if (!this.state.rate_bool && this.state.allCinemas.length !== 0) {
             for (var i = 0; i < this.state.allCinemas.length; i++) {
                 cinemasRate[this.state.allCinemas[i].place_id] = this.state.allCinemas[i].rating;
             }
-            this.setState({rate_bool: 1});           
+            this.setState({ rate_bool: 1 });
         }
-        console.log(this.state.page_opened);
-        if (this.state.page_opened){
+        if (this.state.page_opened) {
             this.getSessions();
-            this.setState({page_opened : 0});
+            this.setState({ page_opened: 0 });
         }
 
         //Якщо натиснуто кнопку 'знайти сеанси' робиться запит у функції getSessions
@@ -340,4 +338,12 @@ class MoviePage extends React.Component {
 
 }
 
-export default MoviePage;
+
+const mapStateToProps = state => {
+    return {
+        films: state.moviePage.films,
+    };
+}
+
+
+export default connect(mapStateToProps, null)(MoviePage);

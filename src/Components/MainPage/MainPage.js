@@ -11,9 +11,9 @@ class MainPage extends React.Component {
         return (
             <div>
 
-                <Data state={this.props.state} store={this.props.store} />
+                <Data />
 
-                <Anonces state={this.props.state} store={this.props.store} />
+                <Anonces />
 
                 <Cinemas />
 

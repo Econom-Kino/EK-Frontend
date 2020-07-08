@@ -159,10 +159,8 @@ class Data extends React.Component {
                     </div>
                     {this.state.loading ? (
                         <Posters
-                            state={this.props.state}
                             films={this.state.filmsData}
                             get={this.state.get}
-                            store={this.props.store}
                             date={this.state.date}
                         />
                     ) : (
