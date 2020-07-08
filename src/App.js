@@ -7,6 +7,7 @@ import MainPage from './Components/MainPage/MainPage';
 import MoviePage from './Components/MoviePage/MoviePage';
 import { Route } from 'react-router-dom';
 
+
 class App extends React.Component {
 
 
@@ -14,13 +15,13 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
-                <Route exact path='/' render={() => <MainPage state={this.props.state} store={this.props.store} />} />
+                <Route exact path='/' component={MainPage} />
 
-                <Route path='/movie' render={() => <MoviePage state={this.props.state} />} />
+                <Route path='/movie' component={MoviePage} />
                 <Footer />
             </div>
         )
     }
 }
 
-export default App;
+export default (App);

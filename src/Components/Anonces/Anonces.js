@@ -38,9 +38,8 @@ class Anonces extends React.Component {
                         <div className='anonces__slider'>
                             {this.state.loading ? (
                                 <Slider
-                                    state={this.props.state}
-                                    store={this.props.store}
-                                    announcesFilms={this.state.announcesFilms} />
+                                    announcesFilms={this.state.announcesFilms}
+                                />
                             ) : (
                                     <div className='spinner'>
                                         <Spinner name='line-scale-pulse-out-rapid' color='#F2994A' className="my-class" />

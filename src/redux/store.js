@@ -1,13 +1,11 @@
 import { createStore, combineReducers } from 'redux';
 import { movieReducer } from './moviePage-reducer';
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
     moviePage: movieReducer,
 })
 
-let store = createStore(reducers);
-
-
+let store = createStore(rootReducer);
 
 
 export default store;
